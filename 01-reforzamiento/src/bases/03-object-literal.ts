@@ -2,16 +2,22 @@ interface Person {
     firstName: string;
     lastName: string;
     age: number;
+    address?: Address;
+}
+
+interface Address {
+    zipCode: string;
+    city: string;
 }
 
 const ironman: Person = {
     firstName: 'Tony',
     lastName: 'Stark',
     age: 45,
-    // address: {
-    //     zipCode: '170002',
-    //     city: 'New York'
-    // }
+    address: {
+        zipCode: '170002',
+        city: 'New York'
+    }
 };
 
 const spiderman: Person = {

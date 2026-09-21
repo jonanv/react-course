@@ -2,9 +2,11 @@ function greet(name: string): string {
     return `Hola ${ name }`;
 }
 
-const greet2 = (name: string) => {
-    return `Hola ${ name }`;
-}
+// const greet2 = (name: string): string => {
+//     return `Hola ${ name }`;
+// }
+
+const greet2 = (name: string): string => `Hola ${ name }`;
 
 const message = greet('Goku');
 const message2 = greet2('Vegeta');
@@ -24,7 +26,7 @@ function getUser(): User {
     }
 }
 
-const getUser2 = () => {
+const getUser2 = (): User => {
     return {
         uid: 'abc123',
         username: 'el_papi23'

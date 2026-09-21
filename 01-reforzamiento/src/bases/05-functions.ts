@@ -40,3 +40,14 @@ const user2 = getUser2();
 
 console.log(user);
 console.log(user2);
+
+const myNumbers: number[] = [1, 2, 3, 4, 5, 6];
+
+myNumbers.forEach(function(value) {
+    console.log({ value });
+});
+
+// callback
+myNumbers.forEach((value: number) => {
+    console.log({ value });
+});

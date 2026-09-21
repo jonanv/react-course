@@ -19,7 +19,7 @@ interface Hero {
     rank?: string
 }
 
-const useContext = ({ name, age, key, rank }: Hero) => {
+const useContext = ({ name, age, key, rank = 'Sin rango' }: Hero) => {
     return {
         keyName: key,
         user: {
@@ -30,5 +30,6 @@ const useContext = ({ name, age, key, rank }: Hero) => {
     };
 };
 
-const context = useContext(person);
-console.log(context);
+const { keyName, rank, user: { name: nameUser, age: ageUser } } = useContext(person);
+// console.log(context);
+console.log(keyName, rank, nameUser, ageUser);

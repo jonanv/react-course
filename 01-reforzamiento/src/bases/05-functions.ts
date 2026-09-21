@@ -26,12 +26,14 @@ function getUser(): User {
     }
 }
 
-const getUser2 = (): User => {
-    return {
-        uid: 'abc123',
-        username: 'el_papi23'
-    }
-}
+// const getUser2 = (): User => {
+//     return {
+//         uid: 'abc123',
+//         username: 'el_papi23'
+//     }
+// }
+
+const getUser2 = (): User => ({ uid: 'abc123', username: 'el_papi23' });
 
 const user = getUser();
 const user2 = getUser2();

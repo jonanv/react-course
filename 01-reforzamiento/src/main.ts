@@ -8,8 +8,15 @@ import './style.css';
 // import './bases/07-array-destructuring';
 import './bases/08-import-export';
 
+
+import { getHeroesByOwner } from './bases/08-import-export';
+import { Owner } from './data/heros.data';
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div>
   <h1>Hola Mundo!</h1>
 </div>
 `
+
+const heroesByOwner = getHeroesByOwner(Owner.DC);
+console.log(heroesByOwner);

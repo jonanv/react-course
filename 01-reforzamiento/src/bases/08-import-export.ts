@@ -1,4 +1,4 @@
-import { heroes, type Hero, type Owner } from "../data/heros.data"
+import { heroes, Owner, type Hero } from "../data/heros.data"
 
 
 const getHeroById = (hero_id: number): Hero | undefined => {
@@ -14,9 +14,9 @@ console.log(hero);
  * @param owner - El propietario por cual filtra (DC o Marvel)
  * @returns Array de heroes que pertenece al propietario
  */
-const getHeroesByOwner = (owner: Owner): Hero[] => {
+export const getHeroesByOwner = (owner: Owner): Hero[] => {
     return heroes.filter((hero: Hero) => hero.owner === owner);
 }
 
-const heroesByOwner = getHeroesByOwner('Marvel');
+const heroesByOwner = getHeroesByOwner(Owner.Marvel);
 console.log(heroesByOwner);

@@ -9,7 +9,7 @@ interface Hero {
 enum Owner {
     DC = 'DC', // 0 // 'DC'
     Marvel = 'Marvel', // 1 // 'Marvel'
-}
+};
 
 const heroes: Hero[] = [
     {

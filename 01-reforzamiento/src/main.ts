@@ -10,8 +10,8 @@ import './style.css';
 import './bases/09-promises';
 
 
-import { getHeroesByOwner } from './bases/08-import-export';
-import { Owner } from './data/heros.data';
+// import { getHeroesByOwner } from './bases/08-import-export';
+// import { Owner } from './data/heros.data';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div>
@@ -19,5 +19,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 </div>
 `
 
-const heroesByOwner = getHeroesByOwner(Owner.DC);
-console.log(heroesByOwner);
+// const heroesByOwner = getHeroesByOwner(Owner.DC);
+// console.log(heroesByOwner);

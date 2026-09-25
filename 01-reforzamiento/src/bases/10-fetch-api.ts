@@ -1,4 +1,4 @@
-import type { TopLevel } from "../data/giphy.response";
+import type { GiphyRandomResponse } from "../data/giphy.response";
 
 const API_KEY = 'DDhh1usvhpiJyvSWpQ8e9tJOyoO7AYdp'
 const URL = `https://api.giphy.com/v1/gifs/random?api_key=${ API_KEY }&tag=&rating=g`;
@@ -13,15 +13,18 @@ const myRequest = fetch(URL);
 //     })
 //     .catch((err) => console.error(err));
 
+const createImageInsideDOM = (imageUrl: string) => {
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+
+    document.body.append(imageElement);
+}
+
 myRequest
     .then((response) => response.json())
-    .then((data: TopLevel) => {
-        const imageUrl = data.data.images.original.url;
+    .then(({ data }: GiphyRandomResponse) => {
+        const imageUrl = data.images.original.url;
         console.log(imageUrl);
-
-        const imageElement = document.createElement('img');
-        imageElement.src = imageUrl;
-
-        document.body.append(imageElement);
+        createImageInsideDOM(imageUrl);
     })
     .catch((err) => console.error(err));

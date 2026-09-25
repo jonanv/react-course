@@ -7,10 +7,10 @@
 //     );
 // }
 
-export const MyAwesomeApp = () => {
-    const firstName = 'Johanny';
-    const lastName = 'Vargas';
+const firstName: string = 'Johanny';
+const lastName: string = 'Vargas';
 
+export const MyAwesomeApp = () => {
     return (
         <>
             <h1>{ firstName }</h1>

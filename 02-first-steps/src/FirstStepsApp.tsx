@@ -6,6 +6,8 @@ export function FirstStepsApp() {
             <h1>Carrito de compras</h1>
             
             <ItemCounter />
+            <ItemCounter />
+            <ItemCounter />
         </>
     );
 }

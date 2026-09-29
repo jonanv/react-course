@@ -1,4 +1,4 @@
-export const ItemCounter = () => {
+export const ItemCounter = ({ name }) => {
     return (
         <section style={{
             display: "flex",
@@ -7,7 +7,7 @@ export const ItemCounter = () => {
         }}>
             <span style={{
                 width: 150
-            }}>Nintendo Swtch 2</span>
+            }}>{ name }</span>
             <button>+</button>
             <span>10</span>
             <button>-</button>

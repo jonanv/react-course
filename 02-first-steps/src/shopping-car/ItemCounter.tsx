@@ -1,4 +1,8 @@
-export const ItemCounter = ({ name }) => {
+interface Props {
+    name: string;
+}
+
+export const ItemCounter = ({ name }: Props) => {
     return (
         <section style={{
             display: "flex",

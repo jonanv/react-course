@@ -5,12 +5,14 @@ interface Props {
     quantity?: number
 };
 
-const itemCounterStyle: CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    gap: 10,
-    marginTop: 10
-};
+// const itemCounterStyle: CSSProperties = {
+//     display: "flex",
+//     alignItems: "center",
+//     gap: 10,
+//     marginTop: 10
+// };
+
+import './ItemCounter.css';
 
 export const ItemCounter = ({ name, quantity = 1 }: Props) => {
     const [ count, setCount ] = useState(quantity);
@@ -25,11 +27,15 @@ export const ItemCounter = ({ name, quantity = 1 }: Props) => {
     }
 
     return (
-        <section style={itemCounterStyle}>
-            <span style={{
-                width: 150,
-                color: count === 1 ? 'red' : 'black'
-            }}>{ name }</span>
+        <section className="item-row">
+            <span 
+                className="item-text"
+                style={{
+                    color: count === 1 ? 'red' : 'black'
+                }}
+            >
+                { name }
+            </span>
             <button
                 onClick={handleAdd}
             >+</button>

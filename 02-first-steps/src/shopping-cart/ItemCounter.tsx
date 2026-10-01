@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 
 interface Props {
     name: string;
     quantity?: number
+};
+
+const itemCounterStyle: CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+    marginTop: 10
 };
 
 export const ItemCounter = ({ name, quantity = 1 }: Props) => {
@@ -18,14 +25,10 @@ export const ItemCounter = ({ name, quantity = 1 }: Props) => {
     }
 
     return (
-        <section style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            marginTop: 10
-        }}>
+        <section style={itemCounterStyle}>
             <span style={{
-                width: 150
+                width: 150,
+                color: count === 1 ? 'red' : 'black'
             }}>{ name }</span>
             <button
                 onClick={handleAdd}

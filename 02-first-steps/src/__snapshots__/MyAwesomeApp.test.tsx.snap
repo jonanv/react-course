@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyAwesomeApp > Should match snapshot 1`] = `
+<div>
+  <div
+    data-testid="div-app"
+  >
+    <h1
+      data-testid="first-name-title"
+    >
+      Johanny
+    </h1>
+    <h3>
+      Vargas
+    </h3>
+    <p
+      class="mi-clase-favorita"
+    >
+      Call of Duty, FIFA26, Assasind Creed
+    </p>
+    <p>
+      4
+    </p>
+    <h1>
+      Activo
+    </h1>
+    <p
+      style="background-color: red; border-radius: 10px; padding: 10px;"
+    >
+      {"zip-code":"123443","city":"Manizales"}
+    </p>
+  </div>
+</div>
+`;
+
+exports[`MyAwesomeApp > Should match snapshot 2`] = `
+<div
+  data-testid="div-app"
+>
+  <h1
+    data-testid="first-name-title"
+  >
+    Johanny
+  </h1>
+  <h3>
+    Vargas
+  </h3>
+  <p
+    class="mi-clase-favorita"
+  >
+    Call of Duty, FIFA26, Assasind Creed
+  </p>
+  <p>
+    4
+  </p>
+  <h1>
+    Activo
+  </h1>
+  <p
+    style="background-color: red; border-radius: 10px; padding: 10px;"
+  >
+    {"zip-code":"123443","city":"Manizales"}
+  </p>
+</div>
+`;

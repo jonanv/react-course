@@ -12,7 +12,8 @@ interface Props {
 //     marginTop: 10
 // };
 
-import './ItemCounter.css';
+// import './ItemCounter.css';
+import styles from './ItemCounter.module.css';
 
 export const ItemCounter = ({ name, quantity = 1 }: Props) => {
     const [ count, setCount ] = useState(quantity);
@@ -27,9 +28,9 @@ export const ItemCounter = ({ name, quantity = 1 }: Props) => {
     }
 
     return (
-        <section className="item-row">
+        <section className={styles['item-row']}>
             <span 
-                className="item-text"
+                className={styles['item-text']}
                 style={{
                     color: count === 1 ? 'red' : 'black'
                 }}

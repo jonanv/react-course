@@ -1,15 +1,33 @@
-import { describe, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { MyAwesomeApp } from './MyAwesomeApp';
 
 describe('MyAwesomeApp', () => {
     test('Should render firstname and lastname', () => {
-        render(<MyAwesomeApp />);
+        const { container } = render(<MyAwesomeApp />);
 
         // console.log(screen);
-        screen.debug();
+        // screen.debug();
 
         // console.log(container.innerHTML);
+
+        const h1 = container.querySelector('h1');
+        const h3 = container.querySelector('h3');
+
+        expect(h1?.innerHTML).toStrictEqual('Johanny');
+        expect(h3?.innerHTML).toStrictEqual('Vargas');
+    });
+
+    test('Should render firstname and lastname', () => {
+        render(<MyAwesomeApp />);
+        screen.debug();
+
+        // const h1 = screen.getAllByRole('heading', {
+        //     level: 1
+        // });
+
+        const h1 = screen.getByTestId('first-name-title');
+        expect(h1.innerHTML).toContain('Johanny');
     });
 });

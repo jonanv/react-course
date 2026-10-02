@@ -30,4 +30,12 @@ describe('MyAwesomeApp', () => {
         const h1 = screen.getByTestId('first-name-title');
         expect(h1.innerHTML).toContain('Johanny');
     });
+
+    test('Should match snapshot', () => {
+        const { container } = render(<MyAwesomeApp />);
+        expect(
+            container
+        ).toMatchSnapshot();
+    });
+    
 });

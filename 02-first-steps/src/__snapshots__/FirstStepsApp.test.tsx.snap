@@ -1,0 +1,85 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FirstStepsApp > Shold match snaptchot 1`] = `
+<div>
+  <h1>
+    Carrito de compras
+  </h1>
+  <section
+    class="_item-row_8b32a2"
+  >
+    <span
+      class="_item-text_8b32a2"
+      style="color: black;"
+    >
+      Nintendo Switch 2
+    </span>
+    <button>
+      +
+    </button>
+    <span>
+      2
+    </span>
+    <button>
+      -
+    </button>
+  </section>
+  <section
+    class="_item-row_8b32a2"
+  >
+    <span
+      class="_item-text_8b32a2"
+      style="color: red;"
+    >
+      Pro Controller
+    </span>
+    <button>
+      +
+    </button>
+    <span>
+      1
+    </span>
+    <button>
+      -
+    </button>
+  </section>
+  <section
+    class="_item-row_8b32a2"
+  >
+    <span
+      class="_item-text_8b32a2"
+      style="color: black;"
+    >
+      Super Smash
+    </span>
+    <button>
+      +
+    </button>
+    <span>
+      3
+    </span>
+    <button>
+      -
+    </button>
+  </section>
+  <section
+    class="_item-row_8b32a2"
+  >
+    <span
+      class="_item-text_8b32a2"
+      style="color: black;"
+    >
+      Super Mario Bros
+    </span>
+    <button>
+      +
+    </button>
+    <span>
+      4
+    </span>
+    <button>
+      -
+    </button>
+  </section>
+</div>
+`;

@@ -7,15 +7,23 @@ exports[`FirstStepsApp > Shold match snaptchot 1`] = `
   </h1>
   <div
     data-testid="ItemCounter"
+    name="Nintendo Switch 2"
+    quantity="2"
   />
   <div
     data-testid="ItemCounter"
+    name="Pro Controller"
+    quantity="1"
   />
   <div
     data-testid="ItemCounter"
+    name="Super Smash"
+    quantity="3"
   />
   <div
     data-testid="ItemCounter"
+    name="Super Mario Bros"
+    quantity="4"
   />
 </div>
 `;

@@ -5,7 +5,13 @@ import { FirstStepsApp } from "./FirstStepsApp";
 
 
 vi.mock('./shopping-cart/ItemCounter', () => ({
-    ItemCounter: () => <div data-testid="ItemCounter" />,
+    ItemCounter: (props: unknown) => (
+        <div 
+            data-testid="ItemCounter"
+            name={props.name}
+            quantity={props.quantity}
+        />
+    )
 }));
 
 describe('FirstStepsApp', () => {
@@ -22,7 +28,7 @@ describe('FirstStepsApp', () => {
 
         const itemCounters = screen.getAllByTestId('ItemCounter');
         expect(itemCounters.length).toStrictEqual(4);
-        // screen.debug();
+        screen.debug();
     });
     
 });

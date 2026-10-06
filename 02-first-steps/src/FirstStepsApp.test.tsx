@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, test, vi } from "vitest";
+import { afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 
 import { FirstStepsApp } from "./FirstStepsApp";
 
@@ -22,6 +22,11 @@ vi.mock('./shopping-cart/ItemCounter', () => ({
 // }));
 
 describe('FirstStepsApp', () => {
+
+    afterEach(() => {
+        vi.clearAllMocks();
+    });
+
     test('Shold match snaptshot', () => {
         const { container } = render(<FirstStepsApp />);
 
@@ -41,9 +46,31 @@ describe('FirstStepsApp', () => {
     test('Should render ItemCounter with correct props', () => {
         render(<FirstStepsApp />);
 
-        expect(
-            mockItemCounter
-        ).toHaveBeenCalledTimes(3);
+        expect(mockItemCounter).toHaveBeenCalledTimes(4);
+        expect(mockItemCounter).toHaveBeenCalledWith(
+            {
+                name: 'Nintendo Switch 2',
+                quantity: 2
+            }
+        );
+        expect(mockItemCounter).toHaveBeenCalledWith(
+            {
+                name: 'Pro Controller',
+                quantity: 1
+            }
+        );
+        expect(mockItemCounter).toHaveBeenCalledWith(
+            {
+                name: 'Super Smash',
+                quantity: 3
+            }
+        );
+        expect(mockItemCounter).toHaveBeenCalledWith(
+            {
+                name: 'Super Mario Bros',
+                quantity: 4
+            }
+        );
     });
     
     

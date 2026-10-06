@@ -14,8 +14,6 @@ const lastName: string = 'Vargas';
 
 const games: string[] = ['Call of Duty', 'FIFA26', 'Assasind Creed'];
 
-const isActive: boolean = true;
-
 const obj: any = {
     'zip-code': '123443',
     'city': 'Manizales'
@@ -27,7 +25,11 @@ const myStyles: CSSProperties = {
     padding: 10
 }
 
-export const MyAwesomeApp = () => {
+interface Props {
+    isActive?: boolean;
+}
+
+export const MyAwesomeApp = ({ isActive = true }: Props) => {
     return (
         <div data-testid="div-app">
             <h1 data-testid="first-name-title">{ firstName }</h1>

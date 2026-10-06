@@ -21,7 +21,7 @@ describe('MyAwesomeApp', () => {
 
     test('Should render firstname and lastname', () => {
         render(<MyAwesomeApp />);
-        screen.debug();
+        // screen.debug();
 
         // const h1 = screen.getAllByRole('heading', {
         //     level: 1
@@ -43,6 +43,20 @@ describe('MyAwesomeApp', () => {
         expect(
             screen.getByTestId('div-app')
         ).toMatchSnapshot();
+    });
+
+    test('muestra "Activo" cuando isActive es true', () => {
+        render(<MyAwesomeApp isActive={true} />);
+
+        const [, , h1] = screen.getAllByRole('heading');
+        expect(h1.innerHTML).toContain('Activo');
+    });
+
+    test('muestra "No activo" cuando isActive es false', () => {
+        render(<MyAwesomeApp isActive={false} />);
+
+        const [, , h1] = screen.getAllByRole('heading');
+        expect(h1.innerHTML).toBe('No activo');
     });
     
 });

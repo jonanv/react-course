@@ -14,7 +14,7 @@ import { GifsList } from "./gifs/components/GifsList";
 
 export const GifsApp = () => {
 
-    const [previousTerms, setPreviousTerms] = useState(['dragon ball z']);
+    const [previousTerms, setPreviousTerms] = useState<string[]>([]);
     const [gifs, setGifs] = useState<Gif[]>([]);
 
     const handleTermsClicked = (term: string) => {

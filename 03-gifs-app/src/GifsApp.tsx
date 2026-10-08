@@ -9,8 +9,8 @@ import { mockGifs } from "./mock-data/gifs.mocks";
 // Components
 import { CustomHeader } from "./shared/components/CustomHeader";
 import { SearchBar } from "./shared/components/SearchBar";
-import { PreviousSearches } from "./gifs/PreviousSearches";
-import { GifsList } from "./gifs/GifsList";
+import { PreviousSearches } from "./gifs/components/PreviousSearches";
+import { GifsList } from "./gifs/components/GifsList";
 
 export const GifsApp = () => {
 

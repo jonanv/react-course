@@ -34,7 +34,7 @@ export const GifsApp = () => {
                 true && (
                     <SearchBar
                         placeholder="Buscar gifs"
-                        onQuerySearch={handleSearch}
+                        onQuery={handleSearch}
                     />
                 )
             }

@@ -1,8 +1,10 @@
 import { mockGifs, type Gif } from "./mock-data/gifs.mocks";
 
+// Components
 import { CustomHeader } from "./shared/components/CustomHeader";
 import { SearchBar } from "./shared/components/SearchBar";
 import { PreviousSearches } from "./gifs/PreviousSearches";
+import { GifsList } from "./gifs/GifsList";
 
 export const GifsApp = () => {
     return (
@@ -26,21 +28,9 @@ export const GifsApp = () => {
             />
 
             {/* Gifs */}
-            <div className="gifs-container">
-                {
-                    mockGifs.map((gif: Gif) => (
-                        <div
-                            key={ gif.id }
-                            className="gif-card">
-                            <img src={ gif.url } alt={ gif.title } />
-                            <h3>{ gif.title }</h3>
-                            <p>
-                                { gif.width } x { gif.height } (1.5mb)
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
+            <GifsList
+                gifs={mockGifs}
+            />
         </>
     )
 }

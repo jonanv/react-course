@@ -30,10 +30,15 @@ export const GifsApp = () => {
             />
 
             {/* Search */}
-            <SearchBar
-                placeholder="Buscar gifs"
-                onQuerySearch={handleSearch}
-            />
+            {
+                true && (
+                    <SearchBar
+                        placeholder="Buscar gifs"
+                        onQuerySearch={handleSearch}
+                    />
+                )
+            }
+            
 
             {/* Búsquedas previas */}
             <PreviousSearches 

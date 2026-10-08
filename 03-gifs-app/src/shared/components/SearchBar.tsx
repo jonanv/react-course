@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const SearchBar = ({ placeholder = 'Buscar', onQuery }: Props) => {
-
     const [query, setQuery] = useState('');
 
     useEffect(() => {

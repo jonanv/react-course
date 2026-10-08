@@ -1,4 +1,4 @@
-import { mockGifs, type Gif } from "./mock-data/gifs.mocks";
+import { mockGifs } from "./mock-data/gifs.mocks";
 
 // Components
 import { CustomHeader } from "./shared/components/CustomHeader";
@@ -17,14 +17,13 @@ export const GifsApp = () => {
 
             {/* Search */}
             <SearchBar
-                buttonName="Buscar"
                 placeholder="Buscar gifs"
             />
 
             {/* Búsquedas previas */}
             <PreviousSearches 
                 title="Búsquedas previas"
-                listPrevious={[ 'Goku', 'Saitama', 'Elden Ring' ]}
+                searches={[ 'Goku', 'Saitama', 'Elden Ring' ]}
             />
 
             {/* Gifs */}

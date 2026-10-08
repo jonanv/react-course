@@ -21,10 +21,7 @@ export const GifsApp = () => {
         const term = query.trim().toLowerCase();
         if (!term) return;
         if (previousTerms.includes(term)) return;
-        setPreviousTerms((prev) => {
-            const update = [term, ...prev];
-            return update.slice(0, 8);
-        });
+        setPreviousTerms([term, ...previousTerms].slice(0, 8))
         console.log({ term });
     }
 

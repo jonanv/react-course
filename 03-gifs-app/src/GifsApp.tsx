@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// Imports
+import { getGifsByQuery } from "./gifs/actions/get-gifs-by-query.actions";
+
 // Mocks
 import { mockGifs } from "./mock-data/gifs.mocks";
 
@@ -17,12 +20,14 @@ export const GifsApp = () => {
         console.log({ term });
     }
 
-    const handleSearch = (query: string) => {
-        const term = query.trim().toLowerCase();
-        if (!term) return;
-        if (previousTerms.includes(term)) return;
-        setPreviousTerms([term, ...previousTerms].slice(0, 8))
-        console.log({ term });
+    const handleSearch = async(query: string = '') => {
+        query = query.trim().toLowerCase();
+        if (!query) return;
+        if (previousTerms.includes(query)) return;
+        setPreviousTerms([query, ...previousTerms].slice(0, 8))
+        // console.log({ query });
+
+        await getGifsByQuery(query);
     }
 
     return (

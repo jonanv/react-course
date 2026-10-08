@@ -22,7 +22,6 @@ export const GifsApp = () => {
 
             {/* Búsquedas previas */}
             <PreviousSearches 
-                title="Búsquedas previas"
                 searches={[ 'Goku', 'Saitama', 'Elden Ring' ]}
             />
 

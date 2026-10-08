@@ -3,8 +3,8 @@ import { useState } from "react";
 // Imports
 import { getGifsByQuery } from "./gifs/actions/get-gifs-by-query.actions";
 
-// Mocks
-import { mockGifs } from "./mock-data/gifs.mocks";
+// Interfaces
+import type { Gif } from "./gifs/interfaces/gif.interface";
 
 // Components
 import { CustomHeader } from "./shared/components/CustomHeader";
@@ -15,6 +15,7 @@ import { GifsList } from "./gifs/components/GifsList";
 export const GifsApp = () => {
 
     const [previousTerms, setPreviousTerms] = useState(['dragon ball z']);
+    const [gifs, setGifs] = useState<Gif[]>([]);
 
     const handleTermsClicked = (term: string) => {
         console.log({ term });
@@ -28,8 +29,8 @@ export const GifsApp = () => {
         // console.log({ query });
 
         const gifs = await getGifsByQuery(query);
-
-        console.log({ gifs });
+        // console.log(gifs);
+        setGifs(gifs);
     }
 
     return (
@@ -59,7 +60,7 @@ export const GifsApp = () => {
 
             {/* Gifs */}
             <GifsList
-                gifs={mockGifs}
+                gifs={gifs}
             />
         </>
     )

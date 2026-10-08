@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+// Mocks
 import { mockGifs } from "./mock-data/gifs.mocks";
 
 // Components
@@ -7,6 +10,13 @@ import { PreviousSearches } from "./gifs/PreviousSearches";
 import { GifsList } from "./gifs/GifsList";
 
 export const GifsApp = () => {
+
+    const [previousTerms, setPreviousTerms] = useState(['dragon ball z']);
+
+    const handleTermsClicked = (term: string) => {
+        console.log({ term });
+    }
+
     return (
         <>
             {/* Header */}
@@ -22,7 +32,8 @@ export const GifsApp = () => {
 
             {/* Búsquedas previas */}
             <PreviousSearches 
-                searches={[ 'Goku', 'Saitama', 'Elden Ring' ]}
+                searches={previousTerms}
+                onLabelClicked={handleTermsClicked}
             />
 
             {/* Gifs */}

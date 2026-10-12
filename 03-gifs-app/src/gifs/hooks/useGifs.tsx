@@ -7,12 +7,19 @@ import { getGifsByQuery } from "../actions/get-gifs-by-query.actions";
 import type { Gif } from "../interfaces/gif.interface";
 
 
+const gifsCache: Record<string, Gif[]> = {};
+
 export const useGifs = () => {
 
     const [previousTerms, setPreviousTerms] = useState<string[]>([]);
     const [gifs, setGifs] = useState<Gif[]>([]);
 
     const handleTermsClicked = async(query: string) => {
+        if (gifsCache[query]) {
+            setGifs(gifsCache[query]);
+            return;
+        }
+
         const gifs = await getGifsByQuery(query);
         // console.log(gifs);
         setGifs(gifs);
@@ -28,6 +35,9 @@ export const useGifs = () => {
         const gifs = await getGifsByQuery(query);
         // console.log(gifs);
         setGifs(gifs);
+
+        // Llenar el gifsCache
+        gifsCache[query] = gifs;
     }
 
     return {

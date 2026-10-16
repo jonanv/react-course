@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 // Components
 import { GifsApp } from './GifsApp';
-import { MyCounterApp } from './counter/components/MyCounterApp';
+// import { MyCounterApp } from './counter/components/MyCounterApp';
 
 import './index.css';
 

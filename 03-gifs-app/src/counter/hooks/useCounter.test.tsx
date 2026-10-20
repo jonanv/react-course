@@ -5,6 +5,13 @@ import { useCounter } from "./useCounter";
 
 
 describe('useCounter', () => {
+    // let result;
+
+    // beforeEach(() => {
+    //     const { result: hookValue } = renderHook(() => useCounter());
+    //     result = hookValue;
+    // });
+    
     test('Should inicializate with default value of 10', () => {
         const { result } = renderHook(() => useCounter());
         expect(result.current.counter).toBe(10);

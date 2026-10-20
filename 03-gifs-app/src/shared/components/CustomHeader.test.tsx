@@ -5,8 +5,10 @@ import { CustomHeader } from "./CustomHeader";
 
 
 describe('CustomHeader.tsx', () => {
+    const title = 'Test title';
+    const description = 'Test description';
+
     test('Should render the title correctly', () => {
-        const title = 'Buscador de Gifs';
         render(<CustomHeader title={title} />);
 
         const [h1] = screen.getAllByRole('heading');
@@ -14,17 +16,14 @@ describe('CustomHeader.tsx', () => {
     });
 
     test('Should render the description when provided', () => {
-        const title = 'Buscador de Gifs';
-        const description = 'Descubre y comparte el gif perfecto';
         render(<CustomHeader title={title} description={description} />);
 
-        const [p] = screen.getAllByRole('paragraph');
-        // console.log(p.innerHTML);
-        expect(p.innerHTML).toContain(description);
+        expect(screen.getByText(description)).toBeDefined();
+        expect(screen.getByRole('paragraph')).toBeDefined();
+        expect(screen.getByRole('paragraph').innerHTML).toBe(description);
     });
 
     test('Should not render description when not provided', () => {
-        const title = 'Buscador de Gifs';
         render(<CustomHeader title={title} />);
 
         const p = screen.queryByRole('paragraph');

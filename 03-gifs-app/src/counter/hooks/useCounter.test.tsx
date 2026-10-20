@@ -34,10 +34,12 @@ describe('useCounter', () => {
     
     test('Should reset counter when handleReset is called', () => {
         const { result } = renderHook(() => useCounter());
-        act(() => {
-            result.current.handleAdd();
-        });
-        expect(result.current.counter).toBe(11);
+        act(() => { result.current.handleAdd(); });
+        act(() => { result.current.handleAdd(); });
+        act(() => { result.current.handleAdd(); });
+        act(() => { result.current.handleAdd(); });
+        act(() => { result.current.handleAdd(); });
+        expect(result.current.counter).toBe(15);
         
         act(() => {
             result.current.handleReset();

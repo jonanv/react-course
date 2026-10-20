@@ -23,5 +23,26 @@ describe('useCounter', () => {
         });
         expect(result.current.counter).toBe(11);
     });
+
+    test('Should decrement counter when handleSubtract is called', () => {
+        const { result } = renderHook(() => useCounter());
+        act(() => {
+            result.current.handleSubtract();
+        });
+        expect(result.current.counter).toBe(9);
+    });
+    
+    test('Should reset counter when handleReset is called', () => {
+        const { result } = renderHook(() => useCounter());
+        act(() => {
+            result.current.handleAdd();
+        });
+        expect(result.current.counter).toBe(11);
+        
+        act(() => {
+            result.current.handleReset();
+        });
+        expect(result.current.counter).toBe(10);
+    });
     
 });

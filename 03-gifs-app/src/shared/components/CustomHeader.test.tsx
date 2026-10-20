@@ -24,9 +24,13 @@ describe('CustomHeader.tsx', () => {
     });
 
     test('Should not render description when not provided', () => {
-        render(<CustomHeader title={title} />);
+        const { container } = render(<CustomHeader title={title} />);
+        const divElement = container.querySelector('.content-center');
 
-        const p = screen.queryByRole('paragraph');
+        const h1 = divElement?.querySelector('h1');
+        expect(h1?.innerHTML).toBe(title);
+        
+        const p = divElement?.querySelector('p');
         expect(p).toBeNull();
     });
 });

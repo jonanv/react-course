@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from "vitest";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 
 import { getGifsByQuery } from "./get-gifs-by-query.actions";
 import { giphySearchResponseMock } from "../../../tests/mocks/giphy.response.data";
@@ -58,6 +58,13 @@ describe('getGifsByQuery', () => {
     });
     
     test('Should handle error when the API returns an error', async () => {
+        const consoleErrorSpy = vi.spyOn(console, 'error')
+            .mockImplementation(() => {
+                console.log('Hola');
+                console.log('Mundo');
+                console.log('Johanny');
+            });
+
         mock.onGet('/search').reply(400, { 
             data: { 
                 message: "Bad request" 
@@ -67,6 +74,9 @@ describe('getGifsByQuery', () => {
         const gifs = await getGifsByQuery('goku');
 
         expect(gifs.length).toBe(0);
+        expect(consoleErrorSpy).toHaveBeenCalled();
+        expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+        expect(consoleErrorSpy).toHaveBeenCalledWith(expect.anything());
     });
     
 });

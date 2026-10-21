@@ -25,6 +25,7 @@ export const useGifs = () => {
         const gifs = await getGifsByQuery(query);
         // console.log(gifs);
         setGifs(gifs);
+        gifsCache.current[query] = gifs;
     }
 
     const handleSearch = async(query: string = '') => {

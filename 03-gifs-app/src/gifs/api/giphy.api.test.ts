@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import { giphyApi } from "./giphy.api";
 
 
-describe('giphy.api', () => {
+describe('giphyApi', () => {
     test('Should be configured correctly', () => {
         const params = giphyApi.defaults.params;
 

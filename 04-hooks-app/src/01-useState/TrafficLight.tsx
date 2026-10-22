@@ -6,7 +6,9 @@ const colors = {
     green: 'bg-green-500 animate-pulse',
 };
 
-type TrafficLightColor = 'red' | 'yellow' | 'green';
+// type TrafficLightColor = 'red' | 'yellow' | 'green';
+// Otra forma de hacer el tipado estricto
+type TrafficLightColor = keyof typeof colors;
 
 export const TrafficLight = () => {
 

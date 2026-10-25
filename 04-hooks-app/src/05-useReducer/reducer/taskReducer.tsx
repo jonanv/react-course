@@ -30,13 +30,29 @@ export const taskReducer = (state: TaskState, action: TaskAction): TaskState => 
 
             return {
                 ...state,
-                todos: [...state.todos, newTodo]
+                todos: [...state.todos, newTodo],
             };
         }
-        case 'TOGGLE_TODO':
-            return state;
+
+        case 'TOGGLE_TODO': {
+            const updatedTodos = state.todos.map((todo) => {
+                if (todo.id === action.payload) {
+                    return { ...todo, completed: !todo.completed }
+                }
+                return todo;
+            });
+
+            return {
+                ...state,
+                todos: [...updatedTodos]
+            };
+        }
+
         case 'DELETE_TODO':
-            return state;
+            return {
+                ...state,
+                todos: state.todos.filter((todo) => todo.id !== action.payload),
+            }
     
         default:
             return state;

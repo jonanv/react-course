@@ -1,52 +1,71 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 
 import { Plus, Trash2, Check } from 'lucide-react';
 
+// Components
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-interface Todo {
-    id: number;
-    text: string;
-    completed: boolean;
-}
+import { getInitialState, taskReducer } from './reducer/taskReducer';
+
+// interface Todo {
+//     id: number;
+//     text: string;
+//     completed: boolean;
+// }
 
 export const TasksApp = () => {
-    const [todos, setTodos] = useState<Todo[]>([]);
+    // const [todos, setTodos] = useState<Todo[]>([]);
     const [inputValue, setInputValue] = useState('');
+    const [state, dispatch] = useReducer(taskReducer, getInitialState());
 
     const addTodo = () => {
         console.log('Agregar tarea', inputValue);
         if (inputValue.length === 0) return;
 
-        const newTodo: Todo = {
-            id: Date.now(),
-            text: inputValue.trim(),
-            completed: false
-        };
-        setTodos([...todos, newTodo]);
+        // const newTodo: Todo = {
+        //     id: Date.now(),
+        //     text: inputValue.trim(),
+        //     completed: false
+        // };
+        // setTodos([...todos, newTodo]);
         // setTodos((prev) => [...prev, newTodo]);
+
+        dispatch({
+            type: 'ADD_TODO',
+            payload: inputValue.trim()
+        });
 
         setInputValue('');
     };
 
     const toggleTodo = (id: number) => {
         console.log('Cambiar de true a false', id);
-        const updatedTodos = todos.map((todo) => {
-            if (todo.id === id) {
-                return { ...todo, completed: !todo.completed }
-            }
-            return todo;
+        // const updatedTodos = todos.map((todo) => {
+        //     if (todo.id === id) {
+        //         return { ...todo, completed: !todo.completed }
+        //     }
+        //     return todo;
+        // });
+        // setTodos(updatedTodos);
+
+        dispatch({
+            type: 'TOGGLE_TODO',
+            payload: id
         });
-        setTodos(updatedTodos);
     };
 
     const deleteTodo = (id: number) => {
         console.log('Eliminar tarea', id);
-        const updatedTodos: Todo[] = todos.filter((todo) => todo.id !== id);
-        setTodos(updatedTodos);
+        // const updatedTodos: Todo[] = todos.filter((todo) => todo.id !== id);
+        // setTodos(updatedTodos);
+
+        dispatch({
+            type: 'DELETE_TODO',
+            payload: id
+        });
     };
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -55,8 +74,10 @@ export const TasksApp = () => {
         addTodo();
     };
 
-    const completedCount = todos.filter((todo) => todo.completed).length;
-    const totalCount = todos.length;
+    const { todos, completed: completedCount, lenght: totalCount} = state;
+
+    // const completedCount = todos.filter((todo) => todo.completed).length;
+    // const totalCount = todos.length;
 
     return (
         <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 p-4">

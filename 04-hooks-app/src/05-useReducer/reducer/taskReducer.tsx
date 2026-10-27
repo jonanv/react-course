@@ -17,12 +17,19 @@ export type TaskAction =
     | { type: 'DELETE_TODO', payload: number };
 
 export const getInitialState = () => {
-    return {
-        todos: [],
-        lenght: 0,
-        completed: 0,
-        pending: 0
+    const localStorageState = localStorage.getItem('task-state');
+    
+    if (!localStorageState) {
+        return {
+            todos: [],
+            lenght: 0,
+            completed: 0,
+            pending: 0
+        }
     }
+
+    //! Cuidado, porque el objeto pudo haber sido manipulado
+    return JSON.parse(localStorageState);
 }
 
 export const taskReducer = (state: TaskState, action: TaskAction): TaskState => {

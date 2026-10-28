@@ -42,7 +42,7 @@ export const ScrambleWords = () => {
 
     // const [isGameOver, setIsGameOver] = useState(false);
 
-    const handleGuessSubmit = (e: React.FormEvent) => {
+    const handleGuessSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         // Previene el refresh de la página
         e.preventDefault();
         // Implementar lógica de juego

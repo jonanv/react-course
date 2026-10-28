@@ -10,7 +10,8 @@ import { createRoot } from 'react-dom/client';
 // import { FocusScreen } from './04-useRef/FocusScreen';
 // import { TasksApp } from './05-useReducer/TaskApp';
 // import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseState';
-import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseReducer';
+// import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseReducer';
+import { MemoHook } from './06-memos/MemoHook';
 
 // Styles
 import './index.css';
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')!).render(
     {/* <PokemonPage /> */}
     {/* <FocusScreen /> */}
     {/* <TasksApp /> */}
-    <ScrambleWords />
+    {/* <ScrambleWords /> */}
+    <MemoHook />
   </StrictMode>,
 )

@@ -121,6 +121,6 @@ export const scrambleWordsReducer = (state: ScrambleWordsState, action: Scramble
         }
 
         default:
-            state;
+            return state;
     }
 }

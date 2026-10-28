@@ -9,7 +9,8 @@ import { createRoot } from 'react-dom/client';
 // import { PokemonPage } from './03-examples/PokemonPage';
 // import { FocusScreen } from './04-useRef/FocusScreen';
 // import { TasksApp } from './05-useReducer/TaskApp';
-import { ScrambleWords } from './05-useReducer/ScrambleWorlds';
+// import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseState';
+import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseReducer';
 
 // Styles
 import './index.css';

@@ -31,7 +31,7 @@ const GAME_WORDS = [
 
 // Esta función mezcla el arreglo para que siempre sea aleatorio
 const shuffleArray = (array: string[]) => {
-    return array.sort(() => Math.random() - 0.5);
+    return [...array].sort(() => Math.random() - 0.5);
 };
 
 // Esta función mezcla las letras de la palabra
@@ -106,7 +106,6 @@ export const ScrambleWords = () => {
     const handlePlayAgain = () => {
         // console.log('Jugar de nuevo');
         const newArray = shuffleArray(GAME_WORDS);
-        console.log(newArray);
 
         setPoints(0);
         setErrorCounter(0);

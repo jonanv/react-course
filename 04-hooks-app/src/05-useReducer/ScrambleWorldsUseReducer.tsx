@@ -2,7 +2,7 @@
 // Es necesario componentes de Shadcn/ui
 // https://ui.shadcn.com/docs/installation/vite
 
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -28,12 +28,9 @@ export const ScrambleWords = () => {
         totalWords
     } = state;
 
-    const handleGuessSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
-        // Previene el refresh de la página
-        e.preventDefault();
-        // Implementar lógica de juego
-        // console.log('Intento de adivinanza:', guess, currentWord);
-
+    useEffect(() => {
+        if (points === 0) return;
+        
         // Confetti
         confetti({
             particleCount: 100,
@@ -42,6 +39,13 @@ export const ScrambleWords = () => {
                 y: 0.6
             }
         });
+    }, [points]);
+
+    const handleGuessSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+        // Previene el refresh de la página
+        e.preventDefault();
+        // Implementar lógica de juego
+        // console.log('Intento de adivinanza:', guess, currentWord);
 
         dispatch({
             type: 'CHECK_ANSWER'

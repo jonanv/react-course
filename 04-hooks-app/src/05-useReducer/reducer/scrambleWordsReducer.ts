@@ -15,7 +15,8 @@ export interface ScrambleWordsState {
 export type ScrambleWordsAction =
     | { type: 'SET_GUESS', payload: string }
     | { type: 'CHECK_ANSWER' }
-    | { type: 'NO_TENGO_NI_IDEA3' };
+    | { type: 'SKIP' }
+    | { type: 'PLAY_AGAIN' };
 
 const GAME_WORDS = [
     'REACT',
@@ -97,11 +98,39 @@ export const scrambleWordsReducer = (state: ScrambleWordsState, action: Scramble
                 errorCounter: state.errorCounter + 1,
                 guess: '',
                 isGameOver: state.errorCounter + 1 >= state.maxAllowErrors
-            }
+            };
         }
 
-        case 'NO_TENGO_NI_IDEA3':
-            return state;
+        case 'SKIP': {
+            if (state.skipCounter >= state.maxSkips) return;
+
+            const updatedWords = state.words.slice(1);
+
+            return {
+                ...state,
+                skipCounter: state.skipCounter + 1,
+                words: updatedWords,
+                currentWord: updatedWords[0],
+                scrambledWord: scrambleWord(updatedWords[0]),
+                guess: '',
+            };
+        }
+
+        case 'PLAY_AGAIN': {
+            const newArray = shuffleArray(GAME_WORDS);
+
+            return {
+                ...state,
+                points: 0,
+                errorCounter: 0,
+                guess: '',
+                words: newArray,
+                currentWord: newArray[0],
+                isGameOver: false,
+                skipCounter: 0,
+                scrambledWord: scrambleWord(newArray[0]),
+            };
+        }
 
         default:
             state;

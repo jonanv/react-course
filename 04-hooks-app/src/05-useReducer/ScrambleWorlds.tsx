@@ -75,7 +75,7 @@ export const ScrambleWords = () => {
         // setGuess('');
 
         dispatch({
-            type: 'SKIP'
+            type: 'SKIP_WORD'
         });
     };
 
@@ -93,7 +93,8 @@ export const ScrambleWords = () => {
         // setScrambledWord(scrambleWord(newArray[0]));
 
         dispatch({
-            type: 'PLAY_AGAIN'
+            type: 'PLAY_AGAIN',
+            payload: getInitialState()
         });
     };
 

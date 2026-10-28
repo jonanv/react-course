@@ -28,20 +28,6 @@ export const ScrambleWords = () => {
         totalWords
     } = state;
 
-    // const [words, setWords] = useState(shuffleArray(GAME_WORDS));
-
-    // const [currentWord, setCurrentWord] = useState(words[0]);
-    // const [scrambledWord, setScrambledWord] = useState(scrambleWord(currentWord));
-    // const [guess, setGuess] = useState('');
-    // const [points, setPoints] = useState(0);
-    // const [errorCounter, setErrorCounter] = useState(0);
-    // const [maxAllowErrors, setMaxAllowErrors] = useState(3);
-
-    // const [skipCounter, setSkipCounter] = useState(0);
-    // const [maxSkips, setMaxSkips] = useState(3);
-
-    // const [isGameOver, setIsGameOver] = useState(false);
-
     const handleGuessSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         // Previene el refresh de la página
         e.preventDefault();
@@ -49,52 +35,31 @@ export const ScrambleWords = () => {
         // console.log('Intento de adivinanza:', guess, currentWord);
 
         // Confetti
-        // confetti({
-        //     particleCount: 100,
-        //     spread: 120,
-        //     origin: {
-        //         y: 0.6
-        //     }
-        // });
+        confetti({
+            particleCount: 100,
+            spread: 120,
+            origin: {
+                y: 0.6
+            }
+        });
 
         dispatch({
             type: 'CHECK_ANSWER'
-        })
+        });
     };
 
     const handleSkip = () => {
         // console.log('Palabra saltada');
-        // if (skipCounter >= maxSkips) return;
-
-        // const updatedWords = words.slice(1);
-
-        // setSkipCounter((prev) => prev + 1);
-        // setWords(updatedWords);
-        // setCurrentWord(updatedWords[0]);
-        // setScrambledWord(scrambleWord(updatedWords[0]));
-        // setGuess('');
-
         dispatch({
             type: 'SKIP_WORD'
         });
     };
 
     const handlePlayAgain = () => {
-        // // console.log('Jugar de nuevo');
-        // const newArray = shuffleArray(GAME_WORDS);
-
-        // setPoints(0);
-        // setErrorCounter(0);
-        // setGuess('');
-        // setWords(newArray);
-        // setCurrentWord(newArray[0]);
-        // setIsGameOver(false);
-        // setSkipCounter(0);
-        // setScrambledWord(scrambleWord(newArray[0]));
-
+        // console.log('Jugar de nuevo');
         dispatch({
             type: 'PLAY_AGAIN',
-            payload: getInitialState()
+            payload: getInitialState(),
         });
     };
 

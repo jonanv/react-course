@@ -65,7 +65,7 @@ export const ScrambleWords = () => {
         if (guess === currentWord) {
             const newWords = words.slice(1);
 
-            // COnfetti
+            // Confetti
             confetti({
                 particleCount: 100,
                 spread: 120,

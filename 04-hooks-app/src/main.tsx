@@ -11,7 +11,8 @@ import { createRoot } from 'react-dom/client';
 // import { TasksApp } from './05-useReducer/TaskApp';
 // import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseState';
 // import { ScrambleWords } from './05-useReducer/ScrambleWorldsUseReducer';
-import { MemoHook } from './06-memos/MemoHook';
+// import { MemoHook } from './06-memos/MemoHook';
+import { MemoCounter } from './06-memos/MemoCounter';
 
 // Styles
 import './index.css';
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
     {/* <FocusScreen /> */}
     {/* <TasksApp /> */}
     {/* <ScrambleWords /> */}
-    <MemoHook />
+    {/* <MemoHook /> */}
+    <MemoCounter />
   </StrictMode>,
 )

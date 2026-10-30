@@ -12,8 +12,19 @@ export const InstagromApp = () => {
         { id: 2, text: 'Me encanta 🧡' },
     ]);
 
-    const handleAddComment = async () => {
-        console.log('Nuevo comentario');
+    const handleAddComment = async (formData: FormData) => {
+        const messageText = formData.get('post-message') as string;
+        console.log('Nuevo comentario:', messageText);
+
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+
+        setComments((prev) => [
+            ...prev,
+            {
+                id: new Date().getTime(),
+                text: messageText,
+            },
+        ]);
     };
 
     return (
@@ -47,7 +58,7 @@ export const InstagromApp = () => {
 
             {/* Formulario de comentarios */}
             <form
-                action={handleAddComment}
+                action={(e) => handleAddComment(e)}
                 className="flex flex-col items-center justify-center bg-gray-300 w-[500px] rounded-b-3xl p-4"
             >
                 <input

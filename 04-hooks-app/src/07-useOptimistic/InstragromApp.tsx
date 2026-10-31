@@ -6,6 +6,8 @@ interface Comment {
     optimistic?: boolean;
 }
 
+let lastId: number = 2;
+
 export const InstagromApp = () => {
     const [comments, setComments] = useState<Comment[]>([
         { id: 1, text: '¡Gran foto!' },
@@ -18,11 +20,11 @@ export const InstagromApp = () => {
             return [
                 ...currentComments,
                 {
-                    id: new Date().getTime(),
+                    id: lastId++,
                     text: newCommentText,
                     optimistic: true
                 }
-            ]
+            ];
         }
     );
 

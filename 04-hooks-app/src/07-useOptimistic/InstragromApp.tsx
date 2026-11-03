@@ -40,13 +40,16 @@ export const InstagromApp = () => {
             // Simular la petición http del servidor
             await new Promise((resolve) => setTimeout(resolve, 3000));
     
-            setComments((prev) => [
-                ...prev,
-                {
-                    id: new Date().getTime(),
-                    text: messageText,
-                },
-            ]);
+            // setComments((prev) => [
+            //     ...prev,
+            //     {
+            //         id: new Date().getTime(),
+            //         text: messageText,
+            //     },
+            // ]);
+
+            //! Este seria el codigo para revertir el proceso
+            setComments((prev) => prev );
         });
     };
 

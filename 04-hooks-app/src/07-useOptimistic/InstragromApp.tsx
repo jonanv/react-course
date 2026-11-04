@@ -1,4 +1,5 @@
 import { useOptimistic, useState, useTransition } from 'react';
+import { toast } from 'sonner';
 
 interface Comment {
     id: number;
@@ -50,6 +51,15 @@ export const InstagromApp = () => {
 
             //! Este seria el codigo para revertir el proceso
             setComments((prev) => prev );
+            toast.error('Error al agregar el comentario', {
+                description: 'Intente nuevamente',
+                duration: 10_000,
+                position: 'top-right',
+                action: {
+                    label: 'Cerrar',
+                    onClick: () => toast.dismiss(),
+                }
+            });
         });
     };
 

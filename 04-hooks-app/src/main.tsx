@@ -35,6 +35,6 @@ createRoot(document.getElementById('root')!).render(
     {/* <MemoHook /> */}
     {/* <MemoCounter /> */}
     {/* <InstagromApp /> */}
-    <ClientInfiormation />
+    <ClientInfiormation id={100} />
   </StrictMode>,
 )

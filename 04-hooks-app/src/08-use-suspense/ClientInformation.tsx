@@ -7,7 +7,7 @@ interface Props {
 
 // const userPromise = getUserAction(1);
 
-export const ClientInfiormation = ({ getUser }: Props) => {
+export const ClientInformation = ({ getUser }: Props) => {
 
     const user = use(getUser);
 

@@ -17,7 +17,7 @@ import { getUserAction } from './08-use-suspense/api/get-user.action';
 // import { MemoHook } from './06-memos/MemoHook';
 // import { MemoCounter } from './06-memos/MemoCounter';
 // import { InstagromApp } from './07-useOptimistic/InstragromApp';
-import { ClientInfiormation } from './08-use-suspense/ClientInfiormation';
+import { ClientInformation } from './08-use-suspense/ClientInformation';
 
 // Styles
 import './index.css';
@@ -41,7 +41,7 @@ createRoot(document.getElementById('root')!).render(
         <h1 className='text-2xl'>Cargando...</h1>
       </div>
     )}>
-      <ClientInfiormation getUser={ getUserAction(100) } />
+      <ClientInformation getUser={ getUserAction(100) } />
     </Suspense>
   </StrictMode>,
 )

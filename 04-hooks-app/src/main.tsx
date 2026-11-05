@@ -1,7 +1,8 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { Toaster } from 'sonner';
+import { getUserAction } from './08-use-suspense/api/get-user.action';
 
 // Components
 // import { HooksApp } from './HooksApp';
@@ -35,6 +36,12 @@ createRoot(document.getElementById('root')!).render(
     {/* <MemoHook /> */}
     {/* <MemoCounter /> */}
     {/* <InstagromApp /> */}
-    <ClientInfiormation id={100} />
+    <Suspense fallback={(
+      <div className='bg-gradient flex flex-col gap-4'>
+        <h1 className='text-2xl'>Cargando...</h1>
+      </div>
+    )}>
+      <ClientInfiormation getUser={ getUserAction(100) } />
+    </Suspense>
   </StrictMode>,
 )

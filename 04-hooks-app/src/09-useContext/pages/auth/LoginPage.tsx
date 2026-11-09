@@ -19,8 +19,7 @@ export const LoginPage = () => {
             </form>
 
             <Link to="/about">
-                <Button variant="ghost" 
-                    className="cursor-pointer">
+                <Button variant="ghost">
                     Volver a la página principal
                 </Button>
             </Link>

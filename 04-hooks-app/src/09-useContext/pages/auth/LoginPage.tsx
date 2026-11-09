@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
-import { Button } from "@base-ui/react/button";
-import { Input } from "@base-ui/react/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export const LoginPage = () => {
     return (
@@ -19,7 +19,10 @@ export const LoginPage = () => {
             </form>
 
             <Link to="/about">
-                Volver a la página principal
+                <Button variant="ghost" 
+                    className="cursor-pointer">
+                    Volver a la página principal
+                </Button>
             </Link>
         </div>
     )

@@ -1,4 +1,4 @@
-import { createContext, useState, type PropsWithChildren } from "react";
+import { createContext, useEffect, useState, type PropsWithChildren } from "react";
 import { users, type User } from "../data/user-mock.data";
 
 // interface UserContextProps {
@@ -24,6 +24,13 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
     const [authStatus, setAuthStatus] = useState<AuthStatus>('checking');
     const [user, setUser] = useState<User | null>(null);
 
+    useEffect(() => {
+        const userState = localStorage.getItem('user-state');
+        if (userState) {
+            setUser(JSON.parse(userState));
+        }
+    }, [setUser]);
+
     const handleLogin = (userId: number) => {
         const user = users.find((user) => user.id === userId);
         if (!user) {
@@ -34,6 +41,7 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
         }
         setUser(user);
         setAuthStatus('authenticated');
+        localStorage.setItem('user-state', JSON.stringify(user));
         return true;
     };
 

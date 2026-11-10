@@ -9,11 +9,11 @@ export const AboutPage = () => {
             <div className="flex flex-col gap-2">
                 <Link to="/profile" 
                     className="hover:text-blue-500 underline text-2xl">
-                    Profile
+                    Perfil
                 </Link>
                 <Link to="login" 
                     className="hover:text-blue-500 underline text-2xl">
-                    Iniciar sesion
+                    { isAuthenticated ? 'Cerrar sesion' : 'Iniciar sesion' }
                 </Link>
             </div>
         </div>

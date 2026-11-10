@@ -24,13 +24,6 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
     const [authStatus, setAuthStatus] = useState<AuthStatus>('checking');
     const [user, setUser] = useState<User | null>(null);
 
-    useEffect(() => {
-        const userState = localStorage.getItem('user-state');
-        if (userState) {
-            setUser(JSON.parse(userState));
-        }
-    }, [setUser]);
-
     const handleLogin = (userId: number) => {
         const user = users.find((user) => user.id === userId);
         if (!user) {
@@ -41,7 +34,7 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
         }
         setUser(user);
         setAuthStatus('authenticated');
-        localStorage.setItem('user-state', JSON.stringify(user));
+        localStorage.setItem('userId', JSON.stringify(user.id));
         return true;
     };
 
@@ -50,6 +43,13 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
         setUser(null);
         setAuthStatus('no-authenticated');
     };
+
+    useEffect(() => {
+        const userIdState = localStorage.getItem('userId');
+        if (userIdState) {
+            handleLogin(+userIdState);
+        }
+    }, []);
 
     return (
         <UserContext 

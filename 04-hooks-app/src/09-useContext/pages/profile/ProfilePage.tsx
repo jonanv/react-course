@@ -7,7 +7,7 @@ import { UserContext } from "@/09-useContext/context/userContext";
 
 export const ProfilePage = () => {
 
-    const { user } = useContext(UserContext);
+    const { user, logout } = useContext(UserContext);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
@@ -19,7 +19,8 @@ export const ProfilePage = () => {
             </pre>
 
             <Link to="/about">
-                <Button variant="destructive">
+                <Button variant="destructive"
+                    onClick={logout}>
                     Salir
                 </Button>
             </Link>

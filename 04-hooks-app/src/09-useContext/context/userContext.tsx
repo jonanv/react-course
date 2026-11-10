@@ -42,6 +42,7 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
         console.log('logout');
         setUser(null);
         setAuthStatus('no-authenticated');
+        localStorage.removeItem('userId');
     };
 
     useEffect(() => {

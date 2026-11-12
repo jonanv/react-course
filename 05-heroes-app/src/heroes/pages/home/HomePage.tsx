@@ -5,9 +5,7 @@ import {
     SortAsc,
     Heart,
     Grid,
-    Users,
     Zap,
-    Trophy,
     Eye,
     Brain,
     Gauge,
@@ -19,7 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -141,7 +139,7 @@ export const HomePage = () => {
                 {/* Character Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                     {/* Hero Card 1 - Superman */}
-                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
                         <div className="relative h-64 overflow-hidden">
                             <img
                                 src="/placeholder.svg?height=300&width=300"
@@ -246,7 +244,7 @@ export const HomePage = () => {
                     </Card>
 
                     {/* Hero Card 2 - Batman */}
-                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
                         <div className="relative h-64 overflow-hidden">
                             <img
                                 src="/placeholder.svg?height=300&width=300"
@@ -345,7 +343,7 @@ export const HomePage = () => {
                     </Card>
 
                     {/* Hero Card 3 - Wonder Woman */}
-                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
                         <div className="relative h-64 overflow-hidden">
                             <img
                                 src="/placeholder.svg?height=300&width=300"
@@ -444,7 +442,7 @@ export const HomePage = () => {
                     </Card>
 
                     {/* Hero Card 4 - Spider-Man */}
-                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
                         <div className="relative h-64 overflow-hidden">
                             <img
                                 src="/placeholder.svg?height=300&width=300"
@@ -543,7 +541,7 @@ export const HomePage = () => {
                     </Card>
 
                     {/* Hero Card 5 - Iron Man */}
-                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
                         <div className="relative h-64 overflow-hidden">
                             <img
                                 src="/placeholder.svg?height=300&width=300"
@@ -642,7 +640,7 @@ export const HomePage = () => {
                     </Card>
 
                     {/* Hero Card 6 - Deadpool */}
-                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+                    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
                         <div className="relative h-64 overflow-hidden">
                             <img
                                 src="/placeholder.svg?height=300&width=300"

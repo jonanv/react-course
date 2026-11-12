@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 
 // Layout component
+import { AdminLayout } from "@/admin/layouts/AdminLayout";
 import { HeroesLayout } from "@/heroes/layouts/HeroesLayout";
 
 // Page components
@@ -30,7 +31,13 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "/admin",
-        element: <AdminPage />,
+        element: <AdminLayout />,
+        children: [
+            {
+                index: true,
+                element: <AdminPage />,
+            },
+        ]
     },
     {
         path: "*",

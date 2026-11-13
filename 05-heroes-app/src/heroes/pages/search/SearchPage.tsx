@@ -6,7 +6,6 @@ import { SearchControls } from "./ui/SearchControls";
 export const SearchPage = () => {
     return (
         <>
-            
             {/* Header */}
             <CustomJumbotron
                 title="Búsqueda de SuperHéroes"

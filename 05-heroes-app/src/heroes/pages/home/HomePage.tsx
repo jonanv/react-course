@@ -46,17 +46,6 @@ export const HomePage = () => {
                     </TabsList>
                 </Tabs>
 
-                {/* Results info */}
-                <div className="flex justify-between items-center mb-6">
-                    <div className="flex items-center gap-4">
-                        <p className="text-gray-600">Showing 6 of 16 characters</p>
-                        <Badge variant="secondary" className="flex items-center gap-1">
-                            <Filter className="h-3 w-3" />
-                            Filtered
-                        </Badge>
-                    </div>
-                </div>
-
                 {/* Character Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                     {/* Hero Card 1 - Superman */}

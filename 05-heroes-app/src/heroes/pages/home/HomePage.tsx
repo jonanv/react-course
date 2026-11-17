@@ -10,6 +10,7 @@ import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
 import { HeroStats } from "@/heroes/components/HeroStats";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
+import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
 type ActiveTabType = 'all' |
     'favorites' |
@@ -27,6 +28,18 @@ export const HomePage = () => {
                 <CustomJumbotron
                     title="Universo de SuperHéroes"
                     description="Descubre, explora y administra super héroes y villanos"
+                />
+
+                {/* Breadcrumbs */}
+                <CustomBreadcrumbs 
+                    currentPage="Super héroes"
+                    breadcrumbs={
+                        [
+                            { label: "Home1", to: "/" },
+                            { label: "Home2", to: "/" },
+                            { label: "Home3", to: "/" },
+                        ]
+                    }
                 />
 
                 {/* Stats Dashboard */}

@@ -30,6 +30,8 @@ export const HomePage = () => {
         staleTime: 1000 * 60 * 5 // 5 minutos
     });
 
+    console.log({ data });
+
     // useEffect(() => {
     //     getHeroesByPage().then((heroes) => {
     //         console.log(heroes);

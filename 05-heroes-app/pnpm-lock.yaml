@@ -60,6 +60,9 @@ importers:
       '@rolldown/plugin-babel':
         specifier: ^0.3.0
         version: 0.3.1(@babel/core@7.29.13)(@babel/runtime@8.1.0)(rolldown@1.2.18)(vite@8.3.7(@types/node@24.19.2)(jiti@2.7.0))
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.107.1
+        version: 5.107.1(eslint@10.14.0(jiti@2.7.0))(typescript@6.0.3)
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
@@ -621,6 +624,15 @@ packages:
     resolution: {integrity: sha512-BCNiY0a1ZjdOHVqw7kyb7U72BwfMF3dfUuN+tQsLWky/J5JOI/r7abibglXfygrZhVO/3u3V+E25kkKTeMkXaQ==}
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
+
+  '@tanstack/eslint-plugin-query@5.107.1':
+    resolution: {integrity: sha512-ouojB8ML40E9+Kbxao52IKU0x3528FXHnQlMS5d8fpV/fVnsCRYmfg2PMaMzYEvgCqdxTtvZfrfbSOGf2qoCpw==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
+      typescript: ^5.6.0 || ^6.0.0 || ^7.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   '@tanstack/query-core@5.107.1':
     resolution: {integrity: sha512-PSyAik11oQBEVOiVy5hjZWHmoUqOXqK1WYy4v55mcxozEfKaQgpUMsgnXhWjuESzSht8JfzqMS1m6M/9CpNgvg==}
@@ -2526,6 +2538,15 @@ snapshots:
       '@tailwindcss/oxide': 4.3.5
       tailwindcss: 4.3.5
       vite: 8.3.7(@types/node@24.19.2)(jiti@2.7.0)
+
+  '@tanstack/eslint-plugin-query@5.107.1(eslint@10.14.0(jiti@2.7.0))(typescript@6.0.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.72.2(eslint@10.14.0(jiti@2.7.0))(typescript@6.0.3)
+      eslint: 10.14.0(jiti@2.7.0)
+    optionalDependencies:
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
 
   '@tanstack/query-core@5.107.1': {}
 

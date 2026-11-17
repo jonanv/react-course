@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Heart } from "lucide-react";
 
@@ -12,6 +12,8 @@ import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
+import { getHeroesByPage } from "@/heroes/actions/get-heroes-by-page.action";
+
 type ActiveTabType = 'all' |
     'favorites' |
     'heroes' |
@@ -20,6 +22,12 @@ type ActiveTabType = 'all' |
 export const HomePage = () => {
 
     const [activeTab, setActiveTab] = useState<ActiveTabType>('all');
+
+    useEffect(() => {
+        getHeroesByPage().then((heroes) => {
+            console.log(heroes);
+        })
+    }, []);
 
     return (
         <>

@@ -17,7 +17,7 @@ import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
 // Custom Hooks
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
-import { useHeroes } from "@/heroes/hooks/useHeroes";
+import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero";
 
 // type ActiveTabType = 'all' |
 //     'favorites' |
@@ -38,7 +38,7 @@ export const HomePage = () => {
         return validTabs.includes(activeTab) ? activeTab : 'all';
     }, [activeTab]);
 
-    const { data: heroesResponse } = useHeroes({page, limit});
+    const { data: heroesResponse } = usePaginatedHero(+page, +limit);
     const { data: summaryResponse } = useHeroSummary();
 
     // useEffect(() => {

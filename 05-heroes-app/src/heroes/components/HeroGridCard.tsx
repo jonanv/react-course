@@ -66,7 +66,7 @@ export const HeroGridCard = ({ hero }: Props) => {
                 </Button>
             </div>
 
-            <CardHeader className="pb-3">
+            <CardHeader className="py-3 z-10 bg-gray-100/50 backdrop-blur-sm relative top-1 group-hover:top-[-10px] transition-all duration-300">
                 <div className="flex justify-between items-start">
                     <div className="space-y-1">
                         <h3 className="font-bold text-lg leading-tight">{ hero.alias }</h3>
@@ -124,8 +124,8 @@ export const HeroGridCard = ({ hero }: Props) => {
                     <div className="flex flex-wrap gap-1">
                         {hero.powers
                             .slice(0, 3)
-                            .map((power: string, index: number) => (
-                            <Badge variant="outline" className="text-xs" key={index}>
+                            .map((power: string) => (
+                            <Badge variant="outline" className="text-xs" key={power}>
                                 { power }
                             </Badge>
                         ))}

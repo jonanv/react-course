@@ -1,7 +1,3 @@
-// import { useEffect, useState } from "react";
-import { useMemo } from "react";
-import { useSearchParams } from "react-router";
-
 // Imports
 import { Heart } from "lucide-react";
 
@@ -18,34 +14,15 @@ import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 // Custom Hooks
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero";
+import { useHomePage } from "@/heroes/hooks/useHomePage";
 
-// type ActiveTabType = 'all' |
-//     'favorites' |
-//     'heroes' |
-//     'villains';
 
 export const HomePage = () => {
 
-    // const [activeTab, setActiveTab] = useState<ActiveTabType>('all');
-    const [searchParams, setSearchParams] = useSearchParams();
-
-    const activeTab = searchParams.get('tab') ?? 'all';
-    const page = searchParams.get('page') ?? '1';
-    const limit = searchParams.get('limit') ?? '6';
-
-    const selectedTab = useMemo(() => {
-        const validTabs = ['all', 'favorites', 'heroes', 'villains'];
-        return validTabs.includes(activeTab) ? activeTab : 'all';
-    }, [activeTab]);
-
+    const { page, limit, selectedTab, setSearchParams } = useHomePage();
+    
     const { data: heroesResponse } = usePaginatedHero(+page, +limit);
     const { data: summaryResponse } = useHeroSummary();
-
-    // useEffect(() => {
-    //     getHeroesByPage().then((heroes) => {
-    //         console.log(heroes);
-    //     })
-    // }, []);
 
     return (
         <>

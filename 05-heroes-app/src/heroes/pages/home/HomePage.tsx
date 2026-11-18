@@ -2,8 +2,8 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router";
 
+// Imports
 import { Heart } from "lucide-react";
-
 import { useQuery } from "@tanstack/react-query";
 
 // UI Components
@@ -16,6 +16,8 @@ import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
+// Custom Hooks
+import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
 
 // type ActiveTabType = 'all' |
@@ -42,6 +44,8 @@ export const HomePage = () => {
         queryFn: () => getHeroesByPageAction(+page, +limit),
         staleTime: 1000 * 60 * 5 // 5 minutos
     });
+
+    const { data: summaryResponse } = useHeroSummary();
 
     // useEffect(() => {
     //     getHeroesByPage().then((heroes) => {
@@ -82,7 +86,7 @@ export const HomePage = () => {
                                 prev.set('tab', 'all');
                                 return prev;
                             })}>
-                            All Characters (16)
+                            All Characters ({ summaryResponse?.totalHeroes })
                         </TabsTrigger>
                         <TabsTrigger 
                             value="favorites" 
@@ -100,7 +104,7 @@ export const HomePage = () => {
                                 prev.set('tab', 'heroes');
                                 return prev;
                             })}>
-                            Heroes (12)
+                            Heroes ({ summaryResponse?.heroCount })
                         </TabsTrigger>
                         <TabsTrigger 
                             value="villains"
@@ -108,7 +112,7 @@ export const HomePage = () => {
                                 prev.set('tab', 'villains');
                                 return prev;
                             })}>
-                            Villains (2)
+                            Villains ({ summaryResponse?.villainCount })
                         </TabsTrigger>
                     </TabsList>
 

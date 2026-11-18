@@ -8,19 +8,28 @@ import { Progress } from "@/components/ui/progress";
 
 // Interfaces
 import type { Hero } from "../interfaces/hero.interface";
+import { useNavigate } from "react-router";
 
 interface Props {
     hero: Hero
 }
 
 export const HeroGridCard = ({ hero }: Props) => {
+
+    const navigate = useNavigate();
+
+    const handleClick = (idSlug: string) => {
+        navigate(`heroes/${idSlug}`);
+    }
+
     return (
         <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-linear-to-br from-white to-gray-50">
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-64">
                 <img
                     src={hero.image}
                     alt={hero.name}
-                    className="object-cover transition-all duration-500 group-hover:scale-110"
+                    className="object-cover transition-all duration-500 group-hover:scale-110 absolute top-[-30] w-full h-[310px] cursor-pointer"
+                    onClick={() => handleClick(hero.slug)}
                 />
 
                 {/* Status indicator */}

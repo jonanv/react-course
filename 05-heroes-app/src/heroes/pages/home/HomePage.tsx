@@ -4,6 +4,8 @@ import { useSearchParams } from "react-router";
 
 import { Heart } from "lucide-react";
 
+import { useQuery } from "@tanstack/react-query";
+
 // UI Components
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -15,7 +17,6 @@ import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
 import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
-import { useQuery } from "@tanstack/react-query";
 
 // type ActiveTabType = 'all' |
 //     'favorites' |

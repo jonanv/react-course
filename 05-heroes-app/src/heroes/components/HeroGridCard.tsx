@@ -1,3 +1,4 @@
+// Imports
 import { Brain, Eye, Gauge, Heart, Shield, Zap } from "lucide-react";
 
 // UI Components

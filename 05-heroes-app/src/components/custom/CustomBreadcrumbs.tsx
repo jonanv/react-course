@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+
+// Imports
 import { SlashIcon } from "lucide-react";
 
 // UI Components

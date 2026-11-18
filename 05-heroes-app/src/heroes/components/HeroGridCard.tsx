@@ -32,7 +32,9 @@ export const HeroGridCard = ({ hero }: Props) => {
                 </div>
 
                 {/* Universe badge */}
-                <Badge className="absolute top-3 right-3 text-xs bg-blue-600 text-white">DC</Badge>
+                <Badge className="absolute top-3 right-3 text-xs bg-blue-600 text-white">
+                    { hero.universe }
+                </Badge>
 
                 {/* Favorite button */}
                 <Button size="sm" variant="ghost" className="absolute bottom-3 right-3 bg-white/90 hover:bg-white">
@@ -55,7 +57,9 @@ export const HeroGridCard = ({ hero }: Props) => {
                         <h3 className="font-bold text-lg leading-tight">{ hero.alias }</h3>
                         <p className="text-sm text-gray-600">{ hero.name }</p>
                     </div>
-                    <Badge className="text-xs bg-green-100 text-green-800 border-green-200">Hero</Badge>
+                    <Badge className="text-xs bg-green-100 text-green-800 border-green-200">
+                        { hero.category }
+                    </Badge>
                 </div>
                 <Badge variant="outline" className="w-fit text-xs">
                     { hero.team }
@@ -113,7 +117,9 @@ export const HeroGridCard = ({ hero }: Props) => {
                     </div>
                 </div>
 
-                <div className="text-xs text-gray-500 pt-2 border-t">Primera aparición: { hero.firstAppearance }</div>
+                <div className="text-xs text-gray-500 pt-2 border-t">
+                    Primera aparición: { hero.firstAppearance }
+                </div>
             </CardContent>
         </Card>
     )

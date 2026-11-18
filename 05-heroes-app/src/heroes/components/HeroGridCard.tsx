@@ -19,22 +19,28 @@ export const HeroGridCard = ({ hero }: Props) => {
             <div className="relative h-64 overflow-hidden">
                 <img
                     src={hero.image}
-                    alt="Superman"
+                    alt={hero.name}
                     className="object-cover transition-all duration-500 group-hover:scale-110"
                 />
 
                 {/* Status indicator */}
                 <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                    <div className={`w-3 h-3 rounded-full ${ hero.status === 'Active' ? 'bg-green-500' : 'bg-red-500' }`} />
                     <Badge variant="secondary" className="text-xs bg-white/90 text-gray-700">
                         { hero.status }
                     </Badge>
                 </div>
 
                 {/* Universe badge */}
-                <Badge className="absolute top-3 right-3 text-xs bg-blue-600 text-white">
-                    { hero.universe }
-                </Badge>
+                {hero.universe === 'DC' ? (
+                    <Badge className="absolute top-3 right-3 text-xs bg-blue-600 text-white">
+                        { hero.universe }
+                    </Badge>
+                ) : (
+                    <Badge className="absolute top-3 right-3 text-xs bg-red-600 text-white">
+                        { hero.universe }
+                    </Badge>
+                )}
 
                 {/* Favorite button */}
                 <Button size="sm" variant="ghost" className="absolute bottom-3 right-3 bg-white/90 hover:bg-white">
@@ -107,13 +113,19 @@ export const HeroGridCard = ({ hero }: Props) => {
                 <div className="space-y-2">
                     <h4 className="font-medium text-sm">Poderes:</h4>
                     <div className="flex flex-wrap gap-1">
-                        {
-                            hero.powers.map((power: string, index: number) => (
-                                <Badge variant="outline" className="text-xs" key={index}>
-                                    { power }
-                                </Badge>
-                            ))
-                        }
+                        {hero.powers
+                            .slice(0, 3)
+                            .map((power: string, index: number) => (
+                            <Badge variant="outline" className="text-xs" key={index}>
+                                { power }
+                            </Badge>
+                        ))}
+
+                        {hero.powers.length > 3 && (
+                            <Badge variant="outline" className="text-xs bg-gray-100">
+                                +{ hero.powers.length - 3 } más
+                            </Badge>
+                        )}
                     </div>
                 </div>
 

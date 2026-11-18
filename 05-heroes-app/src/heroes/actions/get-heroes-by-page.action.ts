@@ -17,7 +17,7 @@ export const getHeroesByPageAction = async (page: number, limit: number = 6): Pr
     }
 
     try {
-        const { data } = await heroApi.get<HeroesResponse>('/heroes', {
+        const { data } = await heroApi.get<HeroesResponse>('/', {
             params: {
                 limit,
                 offset: (page - 1) * limit  

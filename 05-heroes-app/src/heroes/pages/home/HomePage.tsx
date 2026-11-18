@@ -4,7 +4,6 @@ import { useSearchParams } from "react-router";
 
 // Imports
 import { Heart } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
 
 // UI Components
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -18,7 +17,7 @@ import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
 // Custom Hooks
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
-import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
+import { useHeroes } from "@/heroes/hooks/useHeroes";
 
 // type ActiveTabType = 'all' |
 //     'favorites' |
@@ -39,12 +38,7 @@ export const HomePage = () => {
         return validTabs.includes(activeTab) ? activeTab : 'all';
     }, [activeTab]);
 
-    const { data: heroesResponse } = useQuery({
-        queryKey: ['heroes', { page, limit }],
-        queryFn: () => getHeroesByPageAction(+page, +limit),
-        staleTime: 1000 * 60 * 5 // 5 minutos
-    });
-
+    const { data: heroesResponse } = useHeroes({page, limit});
     const { data: summaryResponse } = useHeroSummary();
 
     // useEffect(() => {

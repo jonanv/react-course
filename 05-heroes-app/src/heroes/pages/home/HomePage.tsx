@@ -14,6 +14,7 @@ import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
 import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router";
 
 type ActiveTabType = 'all' |
     'favorites' |
@@ -23,6 +24,9 @@ type ActiveTabType = 'all' |
 export const HomePage = () => {
 
     const [activeTab, setActiveTab] = useState<ActiveTabType>('all');
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    console.log(searchParams.get('tab'));
 
     const { data: heroesResponse } = useQuery({
         queryKey: ['heroes'],
@@ -35,6 +39,16 @@ export const HomePage = () => {
     //         console.log(heroes);
     //     })
     // }, []);
+
+    useEffect(() => {
+        const tabParam = searchParams.get('tab') ?? 'all';
+        const tab: ActiveTabType = ['all', 'favorites', 'heroes', 'villains'].includes(tabParam)
+            ? tabParam as ActiveTabType
+            : 'all';
+
+        setSearchParams({ tab });
+        setActiveTab(tab);
+    }, [searchParams, setSearchParams, setActiveTab]);
 
     return (
         <>

@@ -15,8 +15,6 @@ export const useHomePage = () => {
     
     return {
         // Values
-        searchParams,
-        activeTab,
         page,
         limit,
         selectedTab,

@@ -36,13 +36,13 @@ export const HomePage = () => {
                 {/* Breadcrumbs */}
                 <CustomBreadcrumbs 
                     currentPage="Super héroes"
-                    breadcrumbs={
-                        [
-                            { label: "Home1", to: "/" },
-                            { label: "Home2", to: "/" },
-                            { label: "Home3", to: "/" },
-                        ]
-                    }
+                    // breadcrumbs={
+                    //     [
+                    //         { label: "Home1", to: "/" },
+                    //         { label: "Home2", to: "/" },
+                    //         { label: "Home3", to: "/" },
+                    //     ]
+                    // }
                 />
 
                 {/* Stats Dashboard */}
@@ -100,7 +100,7 @@ export const HomePage = () => {
                     <TabsContent value="heroes">
                         {/* Character Grid Heroes */}
                         <h1>Héroes</h1>
-                        <HeroGrid heroes={[]} />
+                        <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                     </TabsContent>
                     <TabsContent value="villains">
                         {/* Character Grid Villains */}

@@ -28,7 +28,7 @@ export const getHeroesByPageAction = async (page: number, limit: number = 6, cat
         
         const heroes = data.heroes.map((hero: Hero) => ({
             ...hero,
-            image: `${ BASE_URL }/images/${ hero.image }` 
+            image: `${ BASE_URL }/images/${ hero.image }`
         }));
         
         return {

@@ -15,7 +15,7 @@ export const HeroPage = () => {
     const { data: superheroData, isError } = useHeroPage(idSlug);
 
     if (isError) {
-        return <Navigate to='/' />;
+        return <Navigate to={'/'} />;
     }
 
     if (!superheroData) {

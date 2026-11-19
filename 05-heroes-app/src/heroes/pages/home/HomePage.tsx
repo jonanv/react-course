@@ -19,9 +19,9 @@ import { useHomePage } from "@/heroes/hooks/useHomePage";
 
 export const HomePage = () => {
 
-    const { page, limit, selectedTab, setSearchParams } = useHomePage();
+    const { page, limit, category, selectedTab, setSearchParams } = useHomePage();
     
-    const { data: heroesResponse } = usePaginatedHero(+page, +limit);
+    const { data: heroesResponse } = usePaginatedHero(+page, +limit, category);
     const { data: summaryResponse } = useHeroSummary();
 
     return (
@@ -55,6 +55,8 @@ export const HomePage = () => {
                             value="all" 
                             onClick={() => setSearchParams((prev) => {
                                 prev.set('tab', 'all');
+                                prev.set('category', 'all');
+                                prev.set('page', '1');
                                 return prev;
                             })}>
                             All Characters ({ summaryResponse?.totalHeroes })
@@ -64,6 +66,8 @@ export const HomePage = () => {
                             className="flex items-center gap-2"
                             onClick={() => setSearchParams((prev) => {
                                 prev.set('tab', 'favorites');
+                                prev.set('category', 'favorite');
+                                prev.set('page', '1');
                                 return prev;
                             })}>
                             <Heart className="h-4 w-4" />
@@ -73,6 +77,8 @@ export const HomePage = () => {
                             value="heroes" 
                             onClick={() => setSearchParams((prev) => {
                                 prev.set('tab', 'heroes');
+                                prev.set('category', 'hero');
+                                prev.set('page', '1');
                                 return prev;
                             })}>
                             Heroes ({ summaryResponse?.heroCount })
@@ -81,6 +87,8 @@ export const HomePage = () => {
                             value="villains"
                             onClick={() => setSearchParams((prev) => {
                                 prev.set('tab', 'villains');
+                                prev.set('category', 'villain');
+                                prev.set('page', '1');
                                 return prev;
                             })}>
                             Villains ({ summaryResponse?.villainCount })
@@ -105,7 +113,7 @@ export const HomePage = () => {
                     <TabsContent value="villains">
                         {/* Character Grid Villains */}
                         <h1>Villanos</h1>
-                        <HeroGrid heroes={[]}/>
+                        <HeroGrid heroes={heroesResponse?.heroes ?? []}/>
                     </TabsContent>
                 </Tabs>
 

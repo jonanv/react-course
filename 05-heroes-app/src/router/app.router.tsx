@@ -1,3 +1,4 @@
+// Imports
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router";
 
@@ -23,7 +24,7 @@ export const appRouter = createBrowserRouter([
                 element: <HomePage />,
             },
             {
-                path: "heroes/1",
+                path: "heroes/:idSlug",
                 element: <HeroPage />,
             },
             {

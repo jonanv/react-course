@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+// Imports
 import { Heart } from "lucide-react";
 
 // UI Components
@@ -12,14 +11,18 @@ import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 
-type ActiveTabType = 'all' |
-    'favorites' |
-    'heroes' |
-    'villains';
+// Custom Hooks
+import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
+import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero";
+import { useHomePage } from "@/heroes/hooks/useHomePage";
+
 
 export const HomePage = () => {
 
-    const [activeTab, setActiveTab] = useState<ActiveTabType>('all');
+    const { page, limit, category, selectedTab, setSearchParams } = useHomePage();
+    
+    const { data: heroesResponse } = usePaginatedHero(+page, +limit, category);
+    const { data: summaryResponse } = useHeroSummary();
 
     return (
         <>
@@ -33,69 +36,89 @@ export const HomePage = () => {
                 {/* Breadcrumbs */}
                 <CustomBreadcrumbs 
                     currentPage="Super héroes"
-                    breadcrumbs={
-                        [
-                            { label: "Home1", to: "/" },
-                            { label: "Home2", to: "/" },
-                            { label: "Home3", to: "/" },
-                        ]
-                    }
+                    // breadcrumbs={
+                    //     [
+                    //         { label: "Home1", to: "/" },
+                    //         { label: "Home2", to: "/" },
+                    //         { label: "Home3", to: "/" },
+                    //     ]
+                    // }
                 />
 
                 {/* Stats Dashboard */}
                 <HeroStats />
 
                 {/* Tabs */}
-                <Tabs value={activeTab} className="mb-8">
+                <Tabs value={selectedTab} className="mb-8">
                     <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger 
                             value="all" 
-                            onClick={() => setActiveTab('all')}>
-                            All Characters (16)
+                            onClick={() => setSearchParams((prev) => {
+                                prev.set('tab', 'all');
+                                prev.set('category', 'all');
+                                prev.set('page', '1');
+                                return prev;
+                            })}>
+                            All Characters ({ summaryResponse?.totalHeroes })
                         </TabsTrigger>
                         <TabsTrigger 
                             value="favorites" 
                             className="flex items-center gap-2"
-                            onClick={() => setActiveTab('favorites')}>
+                            onClick={() => setSearchParams((prev) => {
+                                prev.set('tab', 'favorites');
+                                prev.set('category', 'favorite');
+                                prev.set('page', '1');
+                                return prev;
+                            })}>
                             <Heart className="h-4 w-4" />
                             Favorites (3)
                         </TabsTrigger>
                         <TabsTrigger 
                             value="heroes" 
-                            onClick={() => setActiveTab('heroes')}>
-                            Heroes (12)
+                            onClick={() => setSearchParams((prev) => {
+                                prev.set('tab', 'heroes');
+                                prev.set('category', 'hero');
+                                prev.set('page', '1');
+                                return prev;
+                            })}>
+                            Heroes ({ summaryResponse?.heroCount })
                         </TabsTrigger>
                         <TabsTrigger 
                             value="villains"
-                            onClick={() => setActiveTab('villains')}>
-                            Villains (2)
+                            onClick={() => setSearchParams((prev) => {
+                                prev.set('tab', 'villains');
+                                prev.set('category', 'villain');
+                                prev.set('page', '1');
+                                return prev;
+                            })}>
+                            Villains ({ summaryResponse?.villainCount })
                         </TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="all">
                         {/* Character Grid */}
                         <h1>Personajes</h1>
-                        <HeroGrid />
+                        <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                     </TabsContent>
                     <TabsContent value="favorites">
                         {/* Character Grid Favorites */}
                         <h1>Favoritos</h1>
-                        <HeroGrid />
+                        <HeroGrid heroes={[]} />
                     </TabsContent>
                     <TabsContent value="heroes">
                         {/* Character Grid Heroes */}
                         <h1>Héroes</h1>
-                        <HeroGrid />
+                        <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                     </TabsContent>
                     <TabsContent value="villains">
                         {/* Character Grid Villains */}
                         <h1>Villanos</h1>
-                        <HeroGrid />
+                        <HeroGrid heroes={heroesResponse?.heroes ?? []}/>
                     </TabsContent>
                 </Tabs>
 
                 {/* Pagination */}
-                <CustomPagination totalPages={8} />
+                <CustomPagination totalPages={heroesResponse?.pages ?? 1} />
             </>
         </>
     );

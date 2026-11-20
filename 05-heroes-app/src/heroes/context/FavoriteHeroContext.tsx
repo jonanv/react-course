@@ -33,7 +33,7 @@ export const FavoriteHeroContextProvider = ({ children }: PropsWithChildren) => 
     }
 
     const handleIsFavorite = (hero: Hero): boolean => {
-        return true;
+        return favorites.some((h) => h.id === hero.id);
     }
 
     return (

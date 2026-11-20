@@ -3,7 +3,7 @@ import { Link } from "react-router"
 
 import { Button } from "@/components/ui/button";
 
-import { UserContext } from "@/09-useContext/context/userContext";
+import { UserContext } from "@/09-useContext/context/UserContext2";
 
 export const AboutPage = () => {
 

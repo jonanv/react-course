@@ -1,6 +1,6 @@
 import { use, type JSX } from "react";
 
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../context/UserContext";
 import { Navigate } from "react-router";
 
 interface Props {

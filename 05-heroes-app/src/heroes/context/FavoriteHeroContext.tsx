@@ -29,7 +29,7 @@ export const FavoriteHeroContextProvider = ({ children }: PropsWithChildren) => 
         const heroExist = favorites.find((favorite: Hero) => favorite.id === hero.id);
 
         if (heroExist) {
-            const newFavorites = favorites.filter((favorite: Hero) => favorite.id === hero.id);
+            const newFavorites = favorites.filter((favorite: Hero) => favorite.id !== hero.id);
             setFavorites(newFavorites);
             return;
         }

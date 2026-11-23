@@ -1,11 +1,15 @@
 import { Navigate, useParams } from "react-router";
 
+// Imports
+import { Shield, Zap, Brain, Gauge, Users, Star, Award } from "lucide-react";
+
 // UI Components
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Shield, Zap, Brain, Gauge, Users, Star, Award } from "lucide-react"
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+// Custom Hooks
 import { useHeroPage } from "@/heroes/hooks/useHeroPage";
 
 

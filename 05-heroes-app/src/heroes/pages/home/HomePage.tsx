@@ -1,3 +1,5 @@
+import { use } from "react";
+
 // Imports
 import { Heart } from "lucide-react";
 
@@ -15,10 +17,12 @@ import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero";
 import { useHomePage } from "@/heroes/hooks/useHomePage";
+import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext";
 
 
 export const HomePage = () => {
 
+    const { favoritCount, favorites } = use(FavoriteHeroContext); 
     const { page, limit, category, selectedTab, setSearchParams } = useHomePage();
     
     const { data: heroesResponse } = usePaginatedHero(+page, +limit, category);
@@ -71,7 +75,7 @@ export const HomePage = () => {
                                 return prev;
                             })}>
                             <Heart className="h-4 w-4" />
-                            Favorites (3)
+                            Favorites ({ favoritCount })
                         </TabsTrigger>
                         <TabsTrigger 
                             value="heroes" 
@@ -103,7 +107,7 @@ export const HomePage = () => {
                     <TabsContent value="favorites">
                         {/* Character Grid Favorites */}
                         <h1>Favoritos</h1>
-                        <HeroGrid heroes={[]} />
+                        <HeroGrid heroes={favorites} />
                     </TabsContent>
                     <TabsContent value="heroes">
                         {/* Character Grid Heroes */}

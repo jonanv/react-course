@@ -1,10 +1,34 @@
+import { useSearchParams } from "react-router";
+
+// Imports
+import { useQuery } from "@tanstack/react-query";
+import { searchHeroesAction } from "@/heroes/actions/search-heroes.action";
+
 // Custom Components
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
 import { HeroStats } from "@/heroes/components/HeroStats";
 import { SearchControls } from "./ui/SearchControls";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
+import { HeroGrid } from "@/heroes/components/HeroGrid";
+
 
 export const SearchPage = () => {
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const name = searchParams.get('name') ?? '';
+    const team = searchParams.get('team') ?? '';
+    const category = searchParams.get('category') ?? '';
+    const universe = searchParams.get('universe') ?? '';
+    const status = searchParams.get('status') ?? '';
+    const strength = searchParams.get('strength') ?? '';
+
+    const { data: heroes = [] } = useQuery({
+        queryKey: ['heroes-search', { name, team, category, universe, status, strength }],
+        queryFn: () => searchHeroesAction({ name, team, category, universe, status, strength }),
+        staleTime: 1000 * 60 * 5, // 5 minutos
+    });
+    
     return (
         <>
             {/* Header */}
@@ -30,6 +54,8 @@ export const SearchPage = () => {
 
             {/* Filter and search */}
             <SearchControls />
+
+            <HeroGrid heroes={heroes} />
         </>
     );
 };

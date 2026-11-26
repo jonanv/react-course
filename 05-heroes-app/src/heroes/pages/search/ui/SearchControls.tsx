@@ -3,20 +3,16 @@ import { useSearchParams } from "react-router";
 
 // Imports
 import { Filter, Grid, Plus, Search, SortAsc } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
-import { searchHeroesAction } from "@/heroes/actions/search-heroes.action";
 
 // UI Components
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+
 export const SearchControls = () => {
 
     const searchInputRef = useRef<HTMLInputElement>(null);
     const [searchParams, setSearchParams] = useSearchParams();
-
-    const name = searchParams.get('name') ?? '';
-    const strength = searchParams.get('strength') ?? '';
     
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         const value = searchInputRef.current?.value ?? '';
@@ -28,12 +24,6 @@ export const SearchControls = () => {
             return prev;
         });
     }
-
-    const { data } = useQuery({
-        queryKey: ['hero-search', ],
-        queryFn: () => searchHeroesAction(name, strength)
-    });
-    console.log(data)
 
     return (
         <>

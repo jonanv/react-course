@@ -15,16 +15,24 @@ export const SearchControls = () => {
 
     const searchInputRef = useRef<HTMLInputElement>(null);
     const [searchParams, setSearchParams] = useSearchParams();
+
+    const activeAccordion = searchParams.get('active-accordion') ?? '';
+
+
+    const setQueryParams = (name: string, value: string) => {
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+            if (value) params.set(name, value);
+            else params.delete(name);
+            return params;
+        });
+    }
     
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         const value = searchInputRef.current?.value ?? '';
 
         if (event.key !== 'Enter') return;
-
-        setSearchParams((prev: URLSearchParams) => {
-            prev.set('name', value);
-            return prev;
-        });
+        setQueryParams('name', value);
     }
 
     return (
@@ -43,17 +51,24 @@ export const SearchControls = () => {
 
                 {/* Action buttons */}
                 <div className="flex gap-2">
-                    <Button variant="outline" className="h-12 bg-transparent">
+                    <Button variant={activeAccordion === 'advance-filters' ? "default" : "outline"} 
+                        className="h-12"
+                        onClick={() => 
+                            setQueryParams(
+                                'active-accordion',
+                                activeAccordion === 'advance-filters' ? '' : 'advance-filters'
+                            )
+                        }>
                         <Filter className="h-4 w-4 mr-2" />
                         Filtros
                     </Button>
 
-                    <Button variant="outline" className="h-12 bg-transparent">
+                    <Button variant="outline" className="h-12">
                         <SortAsc className="h-4 w-4 mr-2" />
                         Buscar por nombre
                     </Button>
 
-                    <Button variant="outline" className="h-12 bg-transparent">
+                    <Button variant="outline" className="h-12">
                         <Grid className="h-4 w-4" />
                     </Button>
 
@@ -65,8 +80,8 @@ export const SearchControls = () => {
             </div>
 
             {/* Advanced Filters */}
-            <Accordion defaultValue={["item-1"]}>
-                <AccordionItem value="item-1">
+            <Accordion value={activeAccordion ? [activeAccordion] : []}>
+                <AccordionItem value='advance-filters'>
                     <AccordionContent>
 
                         <div className="bg-white rounded-lg p-6 mb-8 shadow-sm border">

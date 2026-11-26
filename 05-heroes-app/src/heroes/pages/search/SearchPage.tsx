@@ -17,15 +17,15 @@ export const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const name = searchParams.get('name') ?? '';
-    const team = searchParams.get('team') ?? '';
-    const category = searchParams.get('category') ?? '';
-    const universe = searchParams.get('universe') ?? '';
-    const status = searchParams.get('status') ?? '';
+    // const team = searchParams.get('team') ?? '';
+    // const category = searchParams.get('category') ?? '';
+    // const universe = searchParams.get('universe') ?? '';
+    // const status = searchParams.get('status') ?? '';
     const strength = searchParams.get('strength') ?? '';
 
     const { data: heroes = [] } = useQuery({
-        queryKey: ['heroes-search', { name, team, category, universe, status, strength }],
-        queryFn: () => searchHeroesAction({ name, team, category, universe, status, strength }),
+        queryKey: ['heroes-search', { name, strength }],
+        queryFn: () => searchHeroesAction({ name, strength }),
         staleTime: 1000 * 60 * 5, // 5 minutos
     });
     

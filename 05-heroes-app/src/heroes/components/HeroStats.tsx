@@ -1,3 +1,5 @@
+import { use, useMemo } from "react";
+
 // Imports
 import { Heart, Trophy, Users, Zap } from "lucide-react";
 
@@ -7,10 +9,19 @@ import { HeroStatCard } from "./HeroStatCard";
 
 // Custom Hooks
 import { useHeroSummary } from "../hooks/useHeroSummary";
+import { FavoriteHeroContext } from "../context/FavoriteHeroContext";
+
 
 export const HeroStats = () => {
 
+    const { favoritCount } = use(FavoriteHeroContext);
     const { data: summaryResponse } = useHeroSummary();
+
+    if (!summaryResponse) {
+        return (
+            <div>Loading...</div>
+        );
+    }
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -19,14 +30,14 @@ export const HeroStats = () => {
                 icon={<Users className="h-4 w-4 text-muted-foreground" />}
             >
                 <div className="text-2xl font-bold">
-                    { summaryResponse?.totalHeroes }
+                    { summaryResponse.totalHeroes }
                 </div>
                 <div className="flex gap-1 mt-2">
                     <Badge variant="secondary" className="text-xs">
-                        { summaryResponse?.heroCount } Heroes
+                        { summaryResponse.heroCount } Heroes
                     </Badge>
                     <Badge variant="destructive" className="text-xs">
-                        { summaryResponse?.villainCount } Villanos
+                        { summaryResponse.villainCount } Villanos
                     </Badge>
                 </div>
             </HeroStatCard>
@@ -35,17 +46,17 @@ export const HeroStats = () => {
                 title="Favoritos"
                 icon={<Heart className="h-4 w-4 text-muted-foreground" />}
             >
-                <div className="text-2xl font-bold text-red-600">3</div>
-                <p className="text-xs text-muted-foreground">18.8% del total</p>
+                <div className="text-2xl font-bold text-red-600">{ favoritCount }</div>
+                <p className="text-xs text-muted-foreground">{ ((favoritCount / summaryResponse.totalHeroes) * 100).toFixed(2) }% del total</p>
             </HeroStatCard>
 
             <HeroStatCard 
                 title="El más fuerte"
                 icon={<Zap className="h-4 w-4 text-muted-foreground" />}
             >
-                <div className="text-lg font-bold">{ summaryResponse?.strongestHero.alias }</div>
+                <div className="text-lg font-bold">{ summaryResponse.strongestHero.alias }</div>
                 <p className="text-xs text-muted-foreground">
-                    Fuerza: { summaryResponse?.strongestHero.strength }/10
+                    Fuerza: { summaryResponse.strongestHero.strength }/10
                 </p>
             </HeroStatCard>
 
@@ -53,9 +64,9 @@ export const HeroStats = () => {
                 title="El más inteligente"
                 icon={<Trophy className="h-4 w-4 text-muted-foreground" />}
             >
-                <div className="text-lg font-bold">{ summaryResponse?.smartestHero.alias }</div>
+                <div className="text-lg font-bold">{ summaryResponse.smartestHero.alias }</div>
                 <p className="text-xs text-muted-foreground">
-                    Inteligencia: { summaryResponse?.smartestHero.strength }/10
+                    Inteligencia: { summaryResponse.smartestHero.strength }/10
                 </p>
             </HeroStatCard>
         </div>

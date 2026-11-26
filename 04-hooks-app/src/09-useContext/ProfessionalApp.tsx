@@ -1,7 +1,7 @@
 import { RouterProvider } from "react-router";
 import { appRouter } from "./router/app.router";
 
-import { UserContextProvider } from "./context/userContext";
+import { UserContextProvider } from "./context/UserContext";
 
 export const ProfessionalApp = () => {
     return (

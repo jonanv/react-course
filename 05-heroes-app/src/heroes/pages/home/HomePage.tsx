@@ -22,7 +22,7 @@ import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext";
 
 export const HomePage = () => {
 
-    const { favoritCount, favorites } = use(FavoriteHeroContext); 
+    const { favoritCount, favorites } = use(FavoriteHeroContext);
     const { page, limit, category, selectedTab, setSearchParams } = useHomePage();
     
     const { data: heroesResponse } = usePaginatedHero(+page, +limit, category);

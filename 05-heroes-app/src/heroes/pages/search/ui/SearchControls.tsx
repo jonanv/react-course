@@ -19,7 +19,6 @@ export const SearchControls = () => {
     const activeAccordion = searchParams.get('active-accordion') ?? '';
     const selectedStrength = Number(searchParams.get('strength') ?? 0);
 
-
     const setQueryParams = (name: string, value: string) => {
         setSearchParams((prev) => {
             const params = new URLSearchParams(prev);

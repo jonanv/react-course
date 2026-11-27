@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+
 // Imports
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 
 // UI Components
 import { Button } from "../ui/button";
 import { useSearchParams } from "react-router";
+
 
 interface Props {
     totalPages: number;
@@ -15,13 +18,35 @@ export const CustomPagination = ({ totalPages }: Props) => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const queryPage = searchParams.get('page') ?? '1';
-    const page = isNaN(+queryPage) ? 1 : +queryPage;
+    const parsedPage = Number(queryPage);
+
+    // Válida si es entero, >= 1 y no supera el total de páginas
+    const isValidPage =
+        Number.isInteger(parsedPage) &&
+        parsedPage >= 1 &&
+        (totalPages === 0 || parsedPage <= totalPages);
+
+    const page = isValidPage ? parsedPage : 1;
     
-    const handleChangePage = (page: number) => {
-        if (page < 1 || page > totalPages) return;
-        searchParams.set('page', page.toString());
-        setSearchParams(searchParams);
-    }
+    const handleChangePage = (newPage: number) => {
+        if (newPage < 1 || newPage > totalPages) return;
+
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+            params.set('page', newPage.toString());
+            return params;
+        });
+    };
+
+    useEffect(() => {
+        if (queryPage === null || isValidPage) return;
+
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+            params.set('page', '1');
+            return params;
+        }, { replace: true });
+    }, [queryPage, isValidPage, setSearchParams]);
 
     return (
         <div className="flex items-center justify-center space-x-2">

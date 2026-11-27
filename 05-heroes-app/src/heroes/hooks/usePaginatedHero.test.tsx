@@ -1,10 +1,11 @@
 import type { PropsWithChildren } from "react";
-import { describe, expect, test, vi } from "vitest";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { usePaginatedHero } from "./usePaginatedHero";
 import { getHeroesByPageAction } from "../actions/get-heroes-by-page.action";
+
 import type { HeroesResponse } from "../interfaces/heroes.response";
 
 
@@ -17,21 +18,29 @@ vi.mock('../actions/get-heroes-by-page.action', () => ({
 const mockGetHeroesByPageAction = vi.mocked(getHeroesByPageAction);
 
 // Prepara un proveedor personalizado para envolver el hook con QueryClientProvider
-const tanStackCustomProvider = () => {
-    const queryClient = new QueryClient({
-        defaultOptions: {
-            queries: {
-                retry: false
-            }
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            retry: false
         }
-    });
+    }
+});
 
+const tanStackCustomProvider = () => {
     return ({ children }: PropsWithChildren) => (
         <QueryClientProvider client={queryClient}>{ children }</QueryClientProvider>
     );
 }
 
 describe('usePaginatedHero', () => {
+
+    // Limpiamos los mocks y el estado del QueryClient antes de cada prueba para evitar efectos secundarios entre pruebas
+    beforeEach(() => {
+        vi.clearAllMocks();
+        queryClient.clear();
+    });
+
+
     test('Should return the initial render state (isLoading)', () => {
         const page = 1;
         const limit = 6;
